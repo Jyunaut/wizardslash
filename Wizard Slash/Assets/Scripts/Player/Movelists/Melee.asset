@@ -1,0 +1,144 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4dc749402221546b804d79c41fbdd5, type: 3}
+  m_Name: Melee
+  m_EditorClassIdentifier: 
+  moveType: 0
+  moves:
+  - Name: Basic1
+    canTransitionFrom:
+    - Neutral
+    windupFrame: 1
+    hitFrame: 2
+    recoverFrame: 2
+    totalFrames: 11
+    pushFrames: 2
+    pushX: 2
+    pushY: 0
+    decceleration: 0.25
+    knockbackX: 2
+    knockbackY: 0
+    amplitude: 0.1
+    shakeLength: 0.1
+    spawnEffect: {fileID: 0}
+    hitEffect: {fileID: 3944284571511121860, guid: 69789f9b86fa2c3469bdc88454a623a8,
+      type: 3}
+  - Name: Basic2
+    canTransitionFrom:
+    - Basic1
+    windupFrame: 1
+    hitFrame: 2
+    recoverFrame: 2
+    totalFrames: 10
+    pushFrames: 1
+    pushX: 4
+    pushY: 0
+    decceleration: 0.25
+    knockbackX: 2
+    knockbackY: 0
+    amplitude: 0.1
+    shakeLength: 0.1
+    spawnEffect: {fileID: 0}
+    hitEffect: {fileID: 3944284571511121860, guid: 69789f9b86fa2c3469bdc88454a623a8,
+      type: 3}
+  - Name: Basic3
+    canTransitionFrom:
+    - Basic2
+    windupFrame: 2
+    hitFrame: 3
+    recoverFrame: 9
+    totalFrames: 12
+    pushFrames: 2
+    pushX: 10
+    pushY: 0
+    decceleration: 0.5
+    knockbackX: 4
+    knockbackY: 0
+    amplitude: 0.15
+    shakeLength: 0.3
+    spawnEffect: {fileID: 0}
+    hitEffect: {fileID: 3944284571511121860, guid: 69789f9b86fa2c3469bdc88454a623a8,
+      type: 3}
+  - Name: AirBasic1
+    canTransitionFrom:
+    - AirNeutral
+    - FireFist Uppercut
+    - RisingSlash
+    - FireFist AirUppercut
+    windupFrame: 1
+    hitFrame: 2
+    recoverFrame: 2
+    totalFrames: 9
+    pushFrames: 5
+    pushX: 2
+    pushY: 6
+    decceleration: 1
+    knockbackX: 2
+    knockbackY: 3
+    amplitude: 0.1
+    shakeLength: 0.1
+    spawnEffect: {fileID: 0}
+    hitEffect: {fileID: 3944284571511121860, guid: 69789f9b86fa2c3469bdc88454a623a8,
+      type: 3}
+  - Name: AirBasic2
+    canTransitionFrom:
+    - AirBasic1
+    windupFrame: 1
+    hitFrame: 2
+    recoverFrame: 2
+    totalFrames: 9
+    pushFrames: 5
+    pushX: 2
+    pushY: 6
+    decceleration: 1
+    knockbackX: 2
+    knockbackY: 3
+    amplitude: 0.1
+    shakeLength: 0.1
+    spawnEffect: {fileID: 0}
+    hitEffect: {fileID: 3944284571511121860, guid: 69789f9b86fa2c3469bdc88454a623a8,
+      type: 3}
+  - Name: AirBasic3
+    canTransitionFrom:
+    - AirBasic2
+    windupFrame: 2
+    hitFrame: 3
+    recoverFrame: 7
+    totalFrames: 11
+    pushFrames: 11
+    pushX: 2
+    pushY: 6
+    decceleration: 1
+    knockbackX: 7
+    knockbackY: 3
+    amplitude: 0.15
+    shakeLength: 0.3
+    spawnEffect: {fileID: 0}
+    hitEffect: {fileID: 3944284571511121860, guid: 69789f9b86fa2c3469bdc88454a623a8,
+      type: 3}
+  - Name: RisingSlash
+    canTransitionFrom:
+    - AirDodge
+    windupFrame: 1
+    hitFrame: 2
+    recoverFrame: 3
+    totalFrames: 10
+    pushFrames: 3
+    pushX: 2
+    pushY: 7
+    decceleration: 1
+    knockbackX: 0
+    knockbackY: 0
+    amplitude: 0
+    shakeLength: 0
+    spawnEffect: {fileID: 0}
+    hitEffect: {fileID: 0}

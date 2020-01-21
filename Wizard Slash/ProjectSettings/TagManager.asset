@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Attack
+  - Enemy
+  - Breakable
+  - Hitbox
+  - Cinemachine
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Ground
+  - Player
+  - Enemy
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2498142775
+    locked: 0
+  - name: Ground
+    uniqueID: 2215951283
+    locked: 0
+  - name: EffectsB
+    uniqueID: 495541755
+    locked: 0
+  - name: Actor
+    uniqueID: 2688631489
+    locked: 0
+  - name: EffectsF
+    uniqueID: 2151422293
+    locked: 0
+  - name: Foreground
+    uniqueID: 2685992099
+    locked: 0

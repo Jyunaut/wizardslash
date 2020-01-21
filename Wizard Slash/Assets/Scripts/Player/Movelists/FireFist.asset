@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4dc749402221546b804d79c41fbdd5, type: 3}
+  m_Name: FireFist
+  m_EditorClassIdentifier: 
+  moveType: 1
+  moves:
+  - Name: FireFist Light1
+    canTransitionFrom:
+    - Neutral
+    windupFrame: 1
+    hitFrame: 2
+    recoverFrame: 2
+    totalFrames: 8
+    pushFrames: 1
+    pushX: 5
+    pushY: 0
+    decceleration: 0.25
+    knockbackX: 2
+    knockbackY: 0
+    amplitude: 0.1
+    shakeLength: 0.1
+  - Name: FireFist Light2
+    canTransitionFrom:
+    - FireFist Light1
+    windupFrame: 1
+    hitFrame: 2
+    recoverFrame: 2
+    totalFrames: 8
+    pushFrames: 1
+    pushX: 5
+    pushY: 0
+    decceleration: 0.25
+    knockbackX: 4
+    knockbackY: 0
+    amplitude: 0.1
+    shakeLength: 0.1
+  - Name: FireFist Heavy
+    canTransitionFrom:
+    - FireFist Light2
+    - Basic2
+    windupFrame: 1
+    hitFrame: 2
+    recoverFrame: 10
+    totalFrames: 12
+    pushFrames: 5
+    pushX: 30
+    pushY: 0
+    decceleration: 0.1
+    knockbackX: 30
+    knockbackY: 0
+    amplitude: 0.5
+    shakeLength: 0.3
+  - Name: FireFist Uppercut
+    canTransitionFrom:
+    - Basic1
+    windupFrame: 1
+    hitFrame: 1
+    recoverFrame: 5
+    totalFrames: 12
+    pushFrames: 3
+    pushX: 6
+    pushY: 15
+    decceleration: 0.25
+    knockbackX: 3
+    knockbackY: 15
+    amplitude: 0.3
+    shakeLength: 0.1
+  - Name: FireFist AirUppercut
+    canTransitionFrom:
+    - AirNeutral
+    - AirDodge
+    - AirBasic1
+    - AirBasic2
+    - AirBasic3
+    windupFrame: 1
+    hitFrame: 1
+    recoverFrame: 5
+    totalFrames: 12
+    pushFrames: 12
+    pushX: 2
+    pushY: 8
+    decceleration: 1
+    knockbackX: 3
+    knockbackY: 5
+    amplitude: 0.15
+    shakeLength: 0.1
