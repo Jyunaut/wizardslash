@@ -18,7 +18,7 @@ public class Debugger : MonoBehaviour
         }
         else if (Input.GetKey("/"))
         {
-            
+            print("asdf");
         }
     }
 }
