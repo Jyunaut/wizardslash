@@ -30,10 +30,6 @@ public class PlayerAnimator : MonoBehaviour
 
     void Update()
     {
-        Animator.SetFloat("Horizontal Input", Mathf.Abs(PlayerInput.Horizontal));
-        Animator.SetFloat("Absolute Horizontal Velocity", Mathf.Abs(PlayerController.rigidbody2d.velocity.x));
-        Animator.SetFloat("Vertical Velocity", PlayerController.rigidbody2d.velocity.y);
-        Animator.SetBool("In Combat", inCombat);
         // Play animation based on player state
         if (Animator.HasState(0, Animator.StringToHash(PlayerController.currentAction)) && !Animator.GetCurrentAnimatorStateInfo(0).IsName(PlayerController.currentAction))
         {
