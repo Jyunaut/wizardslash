@@ -17,11 +17,6 @@ public class PlayerAnimator : MonoBehaviour
         Animator = GetComponent<Animator>();
     }
 
-    public void PlayJumpSquatAnimation()
-    {
-        Animator.Play("Jump Squat");
-    }
-
     public void SetInCombat()
     {
         inCombat = true;
@@ -38,7 +33,7 @@ public class PlayerAnimator : MonoBehaviour
         Animator.SetFloat("Horizontal Input", Mathf.Abs(PlayerInput.Horizontal));
         Animator.SetFloat("Absolute Horizontal Velocity", Mathf.Abs(PlayerController.rigidbody2d.velocity.x));
         Animator.SetFloat("Vertical Velocity", PlayerController.rigidbody2d.velocity.y);
-
+        Animator.SetBool("In Combat", inCombat);
         // Play animation based on player state
         if (Animator.HasState(0, Animator.StringToHash(PlayerController.currentAction)) && !Animator.GetCurrentAnimatorStateInfo(0).IsName(PlayerController.currentAction))
         {
@@ -49,11 +44,6 @@ public class PlayerAnimator : MonoBehaviour
         if (inCombat && Time.fixedTime >= combatResetTime)
         {
             inCombat = false;
-        }
-
-        if (PlayerController.currentAction == "Neutral" && !Animator.GetCurrentAnimatorStateInfo(0).IsName("Idle (Combat)") && inCombat && PlayerController.onGround && PlayerInput.Horizontal == 0)
-        {
-            Animator.Play("Idle (Combat)");
         }
     }
 }

@@ -48,7 +48,6 @@ public class PlayerController : Actor
         {
             if (canMove && onGround)
             {
-                GetComponent<PlayerAnimator>().PlayJumpSquatAnimation();
                 Invoke("Jump", 0.06f);
                 currentAction = "AirNeutral";
             }

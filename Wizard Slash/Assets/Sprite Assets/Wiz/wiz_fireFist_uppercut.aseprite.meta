@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: 3ca4d13585e1cf84f8e90d71359eb2a0
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 405fcfee785f4944fb9c2bdd6a9db10b, type: 3}
+  textureSettings:
+    textureType: 8
+    pixelsPerUnit: 32
+    transparentMask: 0
+    transparentColor: {r: 1, g: 0, b: 1, a: 1}
+    meshType: 1
+    extrudeEdges: 1
+    spritePivot: {x: 0.5, y: 0.45}
+    generatePhysics: 1
+    wrapMode: 1
+    filterMode: 0
+    tileSize: {x: 32, y: 32}
+    tilePadding: {x: 0, y: 0}
+    tileOffset: {x: 0, y: 0}
+  animationSettings:
+  - animationName: Charge
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 0; To: 4"
+  - animationName: Attack
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 5; To: 11"
+  atlas: {fileID: -8328923581568760697, guid: 3ca4d13585e1cf84f8e90d71359eb2a0, type: 3}
+  importType: 0

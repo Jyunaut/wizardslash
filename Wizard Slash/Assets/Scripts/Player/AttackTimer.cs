@@ -14,8 +14,7 @@ public class AttackTimer : MonoBehaviour
     public bool isPushing;
     public bool initialPush;
     private float pushEndTime;
-    [HideInInspector]
-    public Moveset.MoveType moveType;
+    [HideInInspector] public Moveset.MoveType moveType;
 
     void Start()
     {

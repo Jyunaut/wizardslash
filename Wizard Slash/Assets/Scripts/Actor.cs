@@ -19,7 +19,7 @@ public abstract class Actor : MonoBehaviour
     public bool canAttack;
     public bool isAttacking;
 
-    [HideInInspector] public Vector2 velocity;
+    private Vector2 velocity;
     private float knockbackTime;
 
     public Actor()
