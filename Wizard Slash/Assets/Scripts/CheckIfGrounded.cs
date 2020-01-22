@@ -9,7 +9,6 @@ public class CheckIfGrounded : MonoBehaviour
         if (collision.gameObject.layer == 8)
         {
             GetComponentInParent<Actor>().onGround = true;
-            GetComponentInParent<Animator>().SetBool("On Ground", true);
 
             if (!GetComponentInParent<Actor>().isAttacking)
                 GetComponentInParent<Actor>().currentAction = "Neutral";
@@ -21,7 +20,6 @@ public class CheckIfGrounded : MonoBehaviour
         if (collision.gameObject.layer == 8)
         {
             GetComponentInParent<Actor>().onGround = false;
-            GetComponentInParent<Animator>().SetBool("On Ground", false);
             
             if (!GetComponentInParent<Actor>().isAttacking)
                 GetComponentInParent<Actor>().currentAction = "AirNeutral";

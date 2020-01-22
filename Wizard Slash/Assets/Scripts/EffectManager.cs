@@ -8,7 +8,7 @@ public class EffectManager : MonoBehaviour
     {
         if (!hitEffect)
         {
-            throw new System.Exception("Hit Effect does not exist");
+            Debug.LogWarning("Hit Effect does not exist");
         }
 
         GameObject Effect;
