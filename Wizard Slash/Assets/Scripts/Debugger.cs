@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Debugger : MonoBehaviour
 {   
-    public ParticleSystem asdf;
     [Range(0, 1)] public float timeSlow;
+    
     void Update()
     {
         // ay debuggin'

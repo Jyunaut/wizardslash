@@ -4,7 +4,7 @@ using UnityEngine;
 public class MoveSelector : MonoBehaviour
 {
     public List<Moveset> movesets = new List<Moveset>();
-    [HideInInspector] public Move SelectedMove;
+    [HideInInspector] public Move selectedMove;
 
     // Select the next attack based on the current action and input (Melee / Magic)
     // Return the current action if there is no match or if there is no moveset
@@ -26,8 +26,8 @@ public class MoveSelector : MonoBehaviour
                         // If a valid transition matches the current action, return the corresponding move
                         if (transition == currentAction)
                         {
-                            SelectedMove = move;
-                            return SelectedMove.Name;
+                            selectedMove = move;
+                            return selectedMove.Name;
                         }
                     }
                 }

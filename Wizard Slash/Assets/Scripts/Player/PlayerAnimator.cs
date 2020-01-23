@@ -53,7 +53,6 @@ public class PlayerAnimator : MonoBehaviour
             inCombat = false;
             SetState(currentState);
         }
-        Debug.Log(currentState);
         currentState.Transitions();
     }
 }
@@ -95,6 +94,15 @@ public abstract class State
         }
     }
 
+    public void RunBrake()
+    {
+        if (playerAnimator.playerInput.Horizontal == 0
+            && playerAnimator.playerController.onGround)
+        {
+            playerAnimator.SetState(new RunBrake(playerAnimator)); return;
+        }
+    }
+
     public void Jump()
     {
         if (playerAnimator.playerInput.Jump)
@@ -119,6 +127,26 @@ public abstract class State
         {
             playerAnimator.SetState(new Attack(playerAnimator)); return;
         }
+    }
+
+    public void Land()
+    {
+
+    }
+
+    public void Turn()
+    {
+
+    }
+
+    public void Damaged()
+    {
+
+    }
+
+    public void NonCombatTransition()
+    {
+
     }
     #endregion
 }
@@ -158,7 +186,35 @@ class Run : State
 
     public override void Transitions()
     {
-        Idle();
+        RunBrake();
+        Jump();
+        Fall();
+        Attack();
+    }
+}
+
+class RunBrake : State
+{
+    public RunBrake(PlayerAnimator playerAnimator) : base(playerAnimator) {}
+
+    private float stateEndTime;
+
+    public override void EnterState()
+    {
+        if (playerAnimator.inCombat)
+            playerAnimator.animator.Play("RunBrake");   // TODO: Add RunBrake Combat animation
+        else
+            playerAnimator.animator.Play("RunBrake");
+
+        stateEndTime = Time.time + playerAnimator.animator.GetCurrentAnimatorStateInfo(0).length;
+    }
+
+    public override void Transitions()
+    {
+        if (Time.time >= stateEndTime)
+            Idle();
+
+        Run();    
         Jump();
         Fall();
         Attack();
@@ -197,6 +253,66 @@ class Fall : State
         Attack();
     }
 }
+// TODO: Implement Land State
+class Land : State
+{
+    public Land(PlayerAnimator playerAnimator) : base(playerAnimator) {}
+
+    public override void EnterState()
+    {
+
+    }
+
+    public override void Transitions()
+    {
+
+    }
+}
+// TODO: Implement Turn State
+class Turn : State
+{
+    public Turn(PlayerAnimator playerAnimator) : base(playerAnimator) {}
+
+    public override void EnterState()
+    {
+
+    }
+
+    public override void Transitions()
+    {
+        
+    }
+}
+// TODO: Implement Damaged State
+class Damaged : State
+{
+    public Damaged(PlayerAnimator playerAnimator) : base(playerAnimator) {}
+
+    public override void EnterState()
+    {
+
+    }
+
+    public override void Transitions()
+    {
+        
+    }
+}
+// TODO: Implement NonCombatTransition State
+class NonCombatTransition : State
+{
+    public NonCombatTransition(PlayerAnimator playerAnimator) : base(playerAnimator) {}
+
+    public override void EnterState()
+    {
+
+    }
+
+    public override void Transitions()
+    {
+        
+    }
+}
 
 class Attack : State
 {
@@ -210,6 +326,7 @@ class Attack : State
     public override void Transitions()
     {
         Attack();
+        Jump();
         if (!playerAnimator.animator.GetCurrentAnimatorStateInfo(0).IsName(playerAnimator.playerController.currentAction))
         {
             switch (playerAnimator.playerController.currentAction)

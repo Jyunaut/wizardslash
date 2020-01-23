@@ -172,13 +172,13 @@ SpriteRenderer:
   m_SortingLayerID: -1606335807
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4627825165345297487, guid: 7cc73d421f0262d4e91baa1e3fce06d7,
+  m_Sprite: {fileID: -3401522847827243884, guid: a5d81c79bd9c363448ce66eca553a5bf,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -242,7 +242,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2, y: 2}
-    newSize: {x: 0.64, y: 0.64}
+    newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -266,7 +266,7 @@ MonoBehaviour:
   moveSpeed: 8
   jumpForce: 14
   runAcceleration: 0.07
-  currentAction: Neutral Air
+  currentAction: AirNeutral
   onGround: 0
   facingRight: 1
   canMove: 1
@@ -284,10 +284,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01d90d86ddc8f74db5a515e28df0508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
+  animator: {fileID: 0}
   effectLocation:
   - {fileID: 7593302472842381314}
   - {fileID: 6504386664767986266}
   - {fileID: 2511639513339474768}
+  inCombat: 0
 --- !u!114 &6593409428046688681
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -63,7 +63,7 @@ public class PlayerController : Actor
                     return;
                 StartMove();
             }
-            else if (AttackTimer.timer >= (MoveSelector.SelectedMove.recoverFrame - 1f) / AttackTimer.FPS && AttackTimer.timer <= MoveSelector.SelectedMove.recoverFrame / AttackTimer.FPS)
+            else if (AttackTimer.timer >= (MoveSelector.selectedMove.recoverFrame - 1f) / AttackTimer.FPS && AttackTimer.timer <= MoveSelector.selectedMove.recoverFrame / AttackTimer.FPS)
             {   
                 // Attack queueing (Melee)
                 AttackTimer.isQueued = true;
@@ -81,7 +81,7 @@ public class PlayerController : Actor
                     return;
                 StartMove();
             }
-            else if (AttackTimer.timer >= (MoveSelector.SelectedMove.recoverFrame - 1f) / AttackTimer.FPS && AttackTimer.timer < MoveSelector.SelectedMove.recoverFrame / AttackTimer.FPS)
+            else if (AttackTimer.timer >= (MoveSelector.selectedMove.recoverFrame - 1f) / AttackTimer.FPS && AttackTimer.timer < MoveSelector.selectedMove.recoverFrame / AttackTimer.FPS)
             {
                 // Attack queueing (Magic)
                 AttackTimer.isQueued = true;

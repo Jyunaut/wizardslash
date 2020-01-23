@@ -3,8 +3,8 @@
 [RequireComponent(typeof(BoxCollider2D))]
 public class CanHit : MonoBehaviour
 {
-    PlayerController PlayerController;
-    MoveSelector MoveSelector;
+    PlayerController playerController;
+    MoveSelector moveSelector;
 
     public enum AttackingUnit { Player, Enemy, Boss, Projectile };
     public AttackingUnit attackingUnit;
@@ -13,8 +13,8 @@ public class CanHit : MonoBehaviour
     {
         if (attackingUnit == AttackingUnit.Player)
         {
-            PlayerController = GetComponentInParent<PlayerController>();
-            MoveSelector = GetComponentInParent<MoveSelector>();
+            playerController = GetComponentInParent<PlayerController>();
+            moveSelector = GetComponentInParent<MoveSelector>();
         }
     }
 
@@ -28,9 +28,9 @@ public class CanHit : MonoBehaviour
         switch (attackingUnit)
         {
             case AttackingUnit.Player:
-                canBeHit.OnScreenShake.Invoke(MoveSelector.SelectedMove.amplitude, MoveSelector.SelectedMove.shakeLength);
-                canBeHit.OnKnockback.Invoke(MoveSelector.SelectedMove.knockbackX, MoveSelector.SelectedMove.knockbackY, PlayerController.facingRight ? 1 : -1);
-                EffectManager.SpawnEffect(MoveSelector.SelectedMove.hitEffect, transform, targetCollider, true);
+                canBeHit.OnScreenShake.Invoke(moveSelector.selectedMove.amplitude, moveSelector.selectedMove.shakeLength);
+                canBeHit.OnKnockback.Invoke(moveSelector.selectedMove.knockbackX, moveSelector.selectedMove.knockbackY, playerController.facingRight ? 1 : -1);
+                EffectManager.SpawnEffect(moveSelector.selectedMove.hitEffect, transform, targetCollider, true);
                 break;
             case AttackingUnit.Enemy:
                 break;
