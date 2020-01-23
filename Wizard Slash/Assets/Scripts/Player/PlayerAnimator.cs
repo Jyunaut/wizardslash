@@ -21,20 +21,6 @@ public class PlayerAnimator : MonoBehaviour
         SetState(new Idle(this));
     }
 
-    void Update()
-    {
-        animator.SetFloat("Vertical Velocity", playerController.rigidbody2d.velocity.y);
-
-        // Play "In Combat" neutral animations during battle
-        if (inCombat && Time.fixedTime >= combatResetTime)
-        {
-            inCombat = false;
-            SetState(currentState);
-        }
-        
-        currentState.StateBehaviour();
-    }
-
     public void SetState(State state)
     {
         if (currentState != null)
@@ -56,6 +42,20 @@ public class PlayerAnimator : MonoBehaviour
     {
         EffectManager.SpawnEffect(parameter, effectLocation[parameter.intParameter], true);
     }
+
+    void Update()
+    {
+        animator.SetFloat("Vertical Velocity", playerController.rigidbody2d.velocity.y);
+
+        // Play "In Combat" neutral animations during battle
+        if (inCombat && Time.fixedTime >= combatResetTime)
+        {
+            inCombat = false;
+            SetState(currentState);
+        }
+        Debug.Log(currentState);
+        currentState.Transitions();
+    }
 }
 
 // ==========================================
@@ -66,8 +66,7 @@ public abstract class State
 {
     protected PlayerAnimator playerAnimator;
 
-    public abstract void StateBehaviour();
-
+    public abstract void Transitions();
     public virtual void EnterState() {}
     public virtual void ExitState() {}
 
@@ -75,6 +74,53 @@ public abstract class State
     {
         this.playerAnimator = playerAnimator;
     }
+
+    #region "State Transitions"
+    public void Idle()
+    {
+        if (playerAnimator.playerInput.Horizontal == 0
+            && playerAnimator.playerController.onGround)
+        {
+            playerAnimator.SetState(new Idle(playerAnimator)); return;
+        }
+    }
+
+    public void Run()
+    {
+        if (playerAnimator.playerInput.Horizontal != 0
+            && Mathf.Abs(playerAnimator.playerController.rigidbody2d.velocity.x) > 0
+            && playerAnimator.playerController.onGround)
+        {
+            playerAnimator.SetState(new Run(playerAnimator)); return;
+        }
+    }
+
+    public void Jump()
+    {
+        if (playerAnimator.playerInput.Jump)
+        {
+            playerAnimator.SetState(new Jump(playerAnimator)); return;
+        }
+    }
+
+    public void Fall()
+    {
+        if (!playerAnimator.playerController.onGround
+            && playerAnimator.playerController.rigidbody2d.velocity.y <= 0)
+        {
+            playerAnimator.SetState(new Fall(playerAnimator)); return;
+        }
+    }
+
+    public void Attack()
+    {
+        if (playerAnimator.animator.HasState(0, Animator.StringToHash(playerAnimator.playerController.currentAction))
+            && !playerAnimator.animator.GetCurrentAnimatorStateInfo(0).IsName(playerAnimator.playerController.currentAction))
+        {
+            playerAnimator.SetState(new Attack(playerAnimator)); return;
+        }
+    }
+    #endregion
 }
 
 class Idle : State
@@ -83,39 +129,18 @@ class Idle : State
 
     public override void EnterState()
     {
-        // Play Animation
         if (playerAnimator.inCombat)
             playerAnimator.animator.Play("Idle Combat");
         else
             playerAnimator.animator.Play("Idle");
     }
 
-    public override void StateBehaviour()
+    public override void Transitions()
     {
-        if (!playerAnimator.playerController.onGround)
-            return;
-
-        // Transitions
-        if (playerAnimator.playerInput.Horizontal != 0 && Mathf.Abs(playerAnimator.playerController.rigidbody2d.velocity.x) > 0)
-        {
-            playerAnimator.SetState(new Run(playerAnimator)); return;
-        }
-
-        if (playerAnimator.animator.HasState(0, Animator.StringToHash(playerAnimator.playerController.currentAction)) &&
-           !playerAnimator.animator.GetCurrentAnimatorStateInfo(0).IsName(playerAnimator.playerController.currentAction))
-        {
-            playerAnimator.SetState(new Attack(playerAnimator)); return;
-        }
-
-        if (playerAnimator.playerInput.Jump)
-        {
-            playerAnimator.SetState(new Jump(playerAnimator)); return;
-        }
-
-        if (!playerAnimator.playerController.onGround)
-        {
-            playerAnimator.SetState(new Fall(playerAnimator)); return;
-        }
+        Run();
+        Jump();
+        Fall();
+        Attack();
     }
 }
 
@@ -125,36 +150,18 @@ class Run : State
 
     public override void EnterState()
     {
-        // Play Animation
         if (playerAnimator.inCombat)
             playerAnimator.animator.Play("Run Combat");
         else    
             playerAnimator.animator.Play("Run");
     }
 
-    public override void StateBehaviour()
+    public override void Transitions()
     {
-        // Transitions
-        if (playerAnimator.playerInput.Horizontal == 0)
-        {
-            playerAnimator.SetState(new Idle(playerAnimator)); return;
-        }
-
-        if (playerAnimator.animator.HasState(0, Animator.StringToHash(playerAnimator.playerController.currentAction)) &&
-           !playerAnimator.animator.GetCurrentAnimatorStateInfo(0).IsName(playerAnimator.playerController.currentAction))
-        {
-            playerAnimator.SetState(new Attack(playerAnimator)); return;
-        }
-
-        if (playerAnimator.playerInput.Jump)
-        {
-            playerAnimator.SetState(new Jump(playerAnimator)); return;
-        }
-
-        if (!playerAnimator.playerController.onGround)
-        {
-            playerAnimator.SetState(new Fall(playerAnimator)); return;
-        }
+        Idle();
+        Jump();
+        Fall();
+        Attack();
     }
 }
 
@@ -164,17 +171,13 @@ class Jump : State
 
     public override void EnterState()
     {
-        // Play Animation
         playerAnimator.animator.Play("Jump");
     }
 
-    public override void StateBehaviour()
+    public override void Transitions()
     {
-        // Transitions
-        if (!playerAnimator.playerController.onGround && playerAnimator.playerController.rigidbody2d.velocity.y <= 0)
-        {
-            playerAnimator.SetState(new Fall(playerAnimator)); return;
-        }
+        Fall();
+        Attack();
     }
 }
 
@@ -184,24 +187,14 @@ class Fall : State
 
     public override void EnterState()
     {
-        // Play Animation
         playerAnimator.animator.Play("Fall");
     }
 
-    public override void StateBehaviour()
+    public override void Transitions()
     {
-        // Transitions
-        if (playerAnimator.playerController.onGround)
-        {
-            if (playerAnimator.playerInput.Horizontal == 0)
-            {
-                playerAnimator.SetState(new Idle(playerAnimator)); return;
-            }
-            else
-            {
-                playerAnimator.SetState(new Run(playerAnimator)); return;
-            }
-        }
+        Idle();
+        Run();
+        Attack();
     }
 }
 
@@ -211,22 +204,23 @@ class Attack : State
 
     public override void EnterState()
     {
-        // Play Animation
         playerAnimator.animator.Play(playerAnimator.playerController.currentAction);
     }
 
-    public override void StateBehaviour()
+    public override void Transitions()
     {
-        // Transitions
+        Attack();
         if (!playerAnimator.animator.GetCurrentAnimatorStateInfo(0).IsName(playerAnimator.playerController.currentAction))
         {
-            if (playerAnimator.playerController.currentAction != "Neutral")
+            switch (playerAnimator.playerController.currentAction)
             {
-                playerAnimator.SetState(new Attack(playerAnimator)); return;
-            }
-            else
-            {
-                playerAnimator.SetState(new Idle(playerAnimator)); return;
+                case "Neutral":
+                    Idle();
+                    Run();
+                    break;
+                case "AirNeutral":
+                    Fall();
+                    break;
             }
         }
     }
