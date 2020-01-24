@@ -29,6 +29,8 @@ MonoBehaviour:
     knockbackY: 0
     amplitude: 0.1
     shakeLength: 0.1
+    spawnEffect: {fileID: 0}
+    hitEffect: {fileID: 0}
   - Name: FireFist Light2
     canTransitionFrom:
     - FireFist Light1
@@ -44,6 +46,8 @@ MonoBehaviour:
     knockbackY: 0
     amplitude: 0.1
     shakeLength: 0.1
+    spawnEffect: {fileID: 0}
+    hitEffect: {fileID: 0}
   - Name: FireFist Heavy
     canTransitionFrom:
     - FireFist Light2
@@ -60,6 +64,8 @@ MonoBehaviour:
     knockbackY: 0
     amplitude: 0.5
     shakeLength: 0.3
+    spawnEffect: {fileID: 0}
+    hitEffect: {fileID: 0}
   - Name: FireFist Uppercut
     canTransitionFrom:
     - Basic1
@@ -68,13 +74,15 @@ MonoBehaviour:
     recoverFrame: 5
     totalFrames: 12
     pushFrames: 3
-    pushX: 6
+    pushX: 7
     pushY: 15
     decceleration: 0.25
     knockbackX: 3
     knockbackY: 15
     amplitude: 0.3
     shakeLength: 0.1
+    spawnEffect: {fileID: 0}
+    hitEffect: {fileID: 0}
   - Name: FireFist AirUppercut
     canTransitionFrom:
     - AirNeutral
@@ -94,3 +102,5 @@ MonoBehaviour:
     knockbackY: 5
     amplitude: 0.15
     shakeLength: 0.1
+    spawnEffect: {fileID: 0}
+    hitEffect: {fileID: 0}

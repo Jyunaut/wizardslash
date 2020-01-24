@@ -2,13 +2,13 @@
 
 public class PlayerAnimator : MonoBehaviour
 {
-    public PlayerInput playerInput = new PlayerInput();
     [HideInInspector] public PlayerController playerController;
     [HideInInspector] public Animator animator;
 
     public Transform[] effectLocation;
 
     public State currentState;
+    public string stateInString;
 
     [HideInInspector] public bool inCombat;
     private float combatResetTime;
@@ -35,7 +35,7 @@ public class PlayerAnimator : MonoBehaviour
     public void SetInCombat()
     {
         inCombat = true;
-        combatResetTime = Time.fixedTime + 5f;
+        combatResetTime = Time.time + 5f;
     }
 
     public void AnimationEventSpawnEffect(AnimationEvent parameter)
@@ -48,12 +48,13 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetFloat("Vertical Velocity", playerController.rigidbody2d.velocity.y);
 
         // Play "In Combat" neutral animations during battle
-        if (inCombat && Time.fixedTime >= combatResetTime)
+        if (inCombat && Time.time >= combatResetTime)
         {
             inCombat = false;
             SetState(currentState);
         }
         currentState.Transitions();
+        stateInString = currentState.ToString();
     }
 }
 
@@ -77,7 +78,7 @@ public abstract class State
     #region "State Transitions"
     public void Idle()
     {
-        if (playerAnimator.playerInput.Horizontal == 0
+        if (playerAnimator.playerController.playerInput.Horizontal == 0
             && playerAnimator.playerController.onGround)
         {
             playerAnimator.SetState(new Idle(playerAnimator)); return;
@@ -86,7 +87,7 @@ public abstract class State
 
     public void Run()
     {
-        if (playerAnimator.playerInput.Horizontal != 0
+        if (playerAnimator.playerController.playerInput.Horizontal != 0
             && Mathf.Abs(playerAnimator.playerController.rigidbody2d.velocity.x) > 0
             && playerAnimator.playerController.onGround)
         {
@@ -96,7 +97,7 @@ public abstract class State
 
     public void RunBrake()
     {
-        if (playerAnimator.playerInput.Horizontal == 0
+        if (playerAnimator.playerController.playerInput.Horizontal == 0
             && playerAnimator.playerController.onGround)
         {
             playerAnimator.SetState(new RunBrake(playerAnimator)); return;
@@ -105,7 +106,9 @@ public abstract class State
 
     public void Jump()
     {
-        if (playerAnimator.playerInput.Jump)
+        if (playerAnimator.playerController.playerInput.Jump
+            && playerAnimator.playerController.canMove
+            && playerAnimator.playerController.onGround)
         {
             playerAnimator.SetState(new Jump(playerAnimator)); return;
         }
@@ -113,8 +116,8 @@ public abstract class State
 
     public void Fall()
     {
-        if (!playerAnimator.playerController.onGround
-            && playerAnimator.playerController.rigidbody2d.velocity.y <= 0)
+        if (playerAnimator.playerController.rigidbody2d.velocity.y <= 0
+            && !playerAnimator.playerController.onGround)
         {
             playerAnimator.SetState(new Fall(playerAnimator)); return;
         }
@@ -206,7 +209,7 @@ class RunBrake : State
         else
             playerAnimator.animator.Play("RunBrake");
 
-        stateEndTime = Time.time + playerAnimator.animator.GetCurrentAnimatorStateInfo(0).length;
+        stateEndTime = Time.time + 0.278f;
     }
 
     public override void Transitions()

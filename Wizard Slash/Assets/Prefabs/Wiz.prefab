@@ -265,7 +265,7 @@ MonoBehaviour:
   rigidbody2d: {fileID: 8676681378929926427}
   moveSpeed: 8
   jumpForce: 14
-  runAcceleration: 0.07
+  runAcceleration: 0.08
   currentAction: AirNeutral
   onGround: 0
   facingRight: 1
@@ -290,6 +290,7 @@ MonoBehaviour:
   - {fileID: 7593302472842381314}
   - {fileID: 6504386664767986266}
   - {fileID: 2511639513339474768}
+  stateInString: 
   inCombat: 0
 --- !u!114 &6593409428046688681
 MonoBehaviour:
@@ -325,7 +326,7 @@ MonoBehaviour:
   movesets:
   - {fileID: 11400000, guid: 0d8bf508d69f4714184d8cd99e4069d4, type: 2}
   - {fileID: 11400000, guid: fee830e6f54db7942a1fad65d0c2b44b, type: 2}
-  SelectedMove:
+  selectedMove:
     Name: 
     canTransitionFrom: []
     windupFrame: 0

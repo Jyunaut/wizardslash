@@ -94,4 +94,20 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: AnimationEventSpawnEffect
+    data: 
+    objectReferenceParameter: {fileID: 3271625231834282779, guid: b42550769bad75447962e2b15c48cf2d,
+      type: 3}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0
+  - time: 0.22222222
+    functionName: AnimationEventSpawnEffect
+    data: 
+    objectReferenceParameter: {fileID: 3271625231834282779, guid: b42550769bad75447962e2b15c48cf2d,
+      type: 3}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0

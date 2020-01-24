@@ -2790,32 +2790,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6441749729559134415, guid: 472bbfb5ab8224942bab2d2237ba323e,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4583430643616670670, guid: 472bbfb5ab8224942bab2d2237ba323e,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -3401522847827243884, guid: a5d81c79bd9c363448ce66eca553a5bf,
-        type: 3}
-    - target: {fileID: 4583430643616670670, guid: 472bbfb5ab8224942bab2d2237ba323e,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4583430643616670670, guid: 472bbfb5ab8224942bab2d2237ba323e,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4583430643616670670, guid: 472bbfb5ab8224942bab2d2237ba323e,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472bbfb5ab8224942bab2d2237ba323e, type: 3}
 --- !u!1 &1471536357

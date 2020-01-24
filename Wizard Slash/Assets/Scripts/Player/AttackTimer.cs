@@ -22,7 +22,7 @@ public class AttackTimer : MonoBehaviour
         moveSelector = GetComponent<MoveSelector>();
     }
 
-    void ResetTimerAndValues()
+    public void ResetTimerAndValues()
     {
         isTiming = false;
         timer = 0;

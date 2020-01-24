@@ -5,16 +5,16 @@
 [RequireComponent(typeof(MoveSelector))]
 public class PlayerController : Actor
 {
-    PlayerInput PlayerInput = new PlayerInput();
-    AttackTimer AttackTimer;
-    MoveSelector MoveSelector;
-    PlayerAnimator PlayerAnimator;
+    public PlayerInput playerInput = new PlayerInput();
+    AttackTimer attackTimer;
+    MoveSelector moveSelector;
+    PlayerAnimator playerAnimator;
 
     void Start()
     {
-        AttackTimer = GetComponent<AttackTimer>();
-        MoveSelector = GetComponent<MoveSelector>();
-        PlayerAnimator = GetComponent<PlayerAnimator>();
+        attackTimer = GetComponent<AttackTimer>();
+        moveSelector = GetComponent<MoveSelector>();
+        playerAnimator = GetComponent<PlayerAnimator>();
     }
 
     public void StartMove()
@@ -22,12 +22,12 @@ public class PlayerController : Actor
         canAttack = false;
         canMove = false;
         isAttacking = true;
-        AttackTimer.timer = 0;
-        AttackTimer.isTiming = true;
-        AttackTimer.isPushing = false;
-        AttackTimer.initialPush = true;
-        PlayerAnimator.SetInCombat();
-        CheckDirection(PlayerInput.Horizontal);
+        attackTimer.timer = 0;
+        attackTimer.isTiming = true;
+        attackTimer.isPushing = false;
+        attackTimer.initialPush = true;
+        playerAnimator.SetInCombat();
+        CheckDirection(playerInput.Horizontal);
     }
 
     // Manages basic horizontal movement
@@ -36,59 +36,62 @@ public class PlayerController : Actor
         if (!canMove || isAttacking)
             return;
         
-        Run(PlayerInput.Horizontal);
-        if (AttackTimer.timer == 0)
-            CheckDirection(PlayerInput.Horizontal);
+        Run(playerInput.Horizontal);
+        if (attackTimer.timer == 0)
+            CheckDirection(playerInput.Horizontal);
     }
 
     // Manages single-input key presses
     void Update()
     {
-        if (PlayerInput.Jump)
+        if (playerInput.Jump)
         {
             if (canMove && onGround)
             {
                 Invoke("Jump", 0.06f);
+                attackTimer.ResetTimerAndValues();
                 currentAction = "AirNeutral";
             }
         }
-        else if (PlayerInput.Melee)
+        else if (playerInput.Melee)
         {
             if (canAttack)
             {
                 string previousAction = currentAction;
-                currentAction = MoveSelector.ChooseMove(Moveset.MoveType.Melee, currentAction);
+                currentAction = moveSelector.ChooseMove(Moveset.MoveType.Melee, currentAction);
                 
                 if (currentAction == previousAction)
                     return;
                 StartMove();
             }
-            else if (AttackTimer.timer >= (MoveSelector.selectedMove.recoverFrame - 1f) / AttackTimer.FPS && AttackTimer.timer <= MoveSelector.selectedMove.recoverFrame / AttackTimer.FPS)
+            else if (attackTimer.timer >= (moveSelector.selectedMove.recoverFrame - 1f) / AttackTimer.FPS
+                     && attackTimer.timer <= moveSelector.selectedMove.recoverFrame / AttackTimer.FPS)
             {   
                 // Attack queueing (Melee)
-                AttackTimer.isQueued = true;
-                AttackTimer.moveType = Moveset.MoveType.Melee;
+                attackTimer.isQueued = true;
+                attackTimer.moveType = Moveset.MoveType.Melee;
             }
         }
-        else if (PlayerInput.Magic)
+        else if (playerInput.Magic)
         {
             if (canAttack)
             {
                 string previousAction = currentAction;
-                currentAction = MoveSelector.ChooseMove(Moveset.MoveType.Magic, currentAction);
+                currentAction = moveSelector.ChooseMove(Moveset.MoveType.Magic, currentAction);
 
                 if (currentAction == previousAction)
                     return;
                 StartMove();
             }
-            else if (AttackTimer.timer >= (MoveSelector.selectedMove.recoverFrame - 1f) / AttackTimer.FPS && AttackTimer.timer < MoveSelector.selectedMove.recoverFrame / AttackTimer.FPS)
+            else if (attackTimer.timer >= (moveSelector.selectedMove.recoverFrame - 1f) / AttackTimer.FPS
+                     && attackTimer.timer < moveSelector.selectedMove.recoverFrame / AttackTimer.FPS)
             {
                 // Attack queueing (Magic)
-                AttackTimer.isQueued = true;
-                AttackTimer.moveType = Moveset.MoveType.Magic;
+                attackTimer.isQueued = true;
+                attackTimer.moveType = Moveset.MoveType.Magic;
             }
         }
-        else if (PlayerInput.Dodge)
+        else if (playerInput.Dodge)
         {
             //TODO: Implement player dodge
         }
