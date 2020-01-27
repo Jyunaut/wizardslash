@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 8025125056083457099, guid: a52623962cfdb7f429d34f8cc24f33d2,
         type: 3}
       propertyPath: m_Name
-      value: Effect_Hit02
+      value: Effect_Hit02_Horizontal
       objectReference: {fileID: 0}
     - target: {fileID: 7625783035403754233, guid: a52623962cfdb7f429d34f8cc24f33d2,
         type: 3}
@@ -86,6 +86,26 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.maxNumParticles
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454432200576177310, guid: a52623962cfdb7f429d34f8cc24f33d2,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454432200576177310, guid: a52623962cfdb7f429d34f8cc24f33d2,
+        type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454432200576177310, guid: a52623962cfdb7f429d34f8cc24f33d2,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454432200576177310, guid: a52623962cfdb7f429d34f8cc24f33d2,
+        type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a52623962cfdb7f429d34f8cc24f33d2, type: 3}

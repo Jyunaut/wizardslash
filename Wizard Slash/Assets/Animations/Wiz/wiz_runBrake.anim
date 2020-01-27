@@ -166,7 +166,7 @@ AnimationClip:
   - time: 0.055555556
     functionName: AnimationEventSpawnEffect
     data: 
-    objectReferenceParameter: {fileID: 2926233444330634729, guid: 686a10f2551be9d4d97addb57d1ae134,
+    objectReferenceParameter: {fileID: 8919881611975751096, guid: 38d22794ca9a83548a876d2f36bdc17a,
       type: 3}
     floatParameter: 0
     intParameter: 1

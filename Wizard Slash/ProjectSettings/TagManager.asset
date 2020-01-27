@@ -58,9 +58,9 @@ TagManager:
   - name: Actor
     uniqueID: 2688631489
     locked: 0
-  - name: EffectsF
-    uniqueID: 2151422293
-    locked: 0
   - name: Foreground
     uniqueID: 2685992099
+    locked: 0
+  - name: EffectsF
+    uniqueID: 2151422293
     locked: 0
