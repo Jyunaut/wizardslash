@@ -115,7 +115,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.35
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1538,15 +1538,15 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: -8399597812543144618, guid: 7c004f886ae2cf34e99508bce7fcebe9,
+    - sprite: {fileID: 2139930200012848648, guid: e6ad1cc2f8946284bbb0fd19f8b3088a,
         type: 3}
-    - sprite: {fileID: 7557894838199530049, guid: 7c004f886ae2cf34e99508bce7fcebe9,
+    - sprite: {fileID: -8567021989939250248, guid: e6ad1cc2f8946284bbb0fd19f8b3088a,
         type: 3}
-    - sprite: {fileID: -4507266074800183184, guid: 7c004f886ae2cf34e99508bce7fcebe9,
+    - sprite: {fileID: -8746802707506362064, guid: e6ad1cc2f8946284bbb0fd19f8b3088a,
         type: 3}
-    - sprite: {fileID: -3502114385168256789, guid: 7c004f886ae2cf34e99508bce7fcebe9,
+    - sprite: {fileID: -3569542173985909676, guid: e6ad1cc2f8946284bbb0fd19f8b3088a,
         type: 3}
-    - sprite: {fileID: -3729809538205045542, guid: 7c004f886ae2cf34e99508bce7fcebe9,
+    - sprite: {fileID: -5417471409676428840, guid: e6ad1cc2f8946284bbb0fd19f8b3088a,
         type: 3}
     flipU: 0
     flipV: 0
@@ -4807,7 +4807,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
-  m_RenderAlignment: 0
+  m_RenderAlignment: 2
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0

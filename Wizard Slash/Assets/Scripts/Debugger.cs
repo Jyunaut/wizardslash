@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Debugger : MonoBehaviour
 {   
@@ -16,9 +16,9 @@ public class Debugger : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
-        else if (Input.GetKey("/"))
+        else if (Input.GetKey("p"))
         {
-            print("asdf");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

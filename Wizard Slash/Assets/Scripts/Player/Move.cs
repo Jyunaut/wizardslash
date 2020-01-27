@@ -29,12 +29,12 @@ public class Move
 
     [Header("Particle Effects")]
     public GameObject spawnEffect;
-    public GameObject hitEffect;
+    public GameObject[] hitEffect;
 
     public Move(float _windupFrame, float _hitFrame, float _recoverFrame, float _totalFrames, float _pushFrames,
                 float _pushX,       float _pushY,    float _decceleration,
                 float _knockbackX,  float _knockbackY,
-                GameObject _spawnEffect, GameObject _hitEffect)
+                GameObject _spawnEffect, GameObject[] _hitEffect)
     {
         windupFrame  = _windupFrame;
         hitFrame     = _hitFrame;

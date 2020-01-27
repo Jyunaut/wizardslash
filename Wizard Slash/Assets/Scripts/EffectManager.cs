@@ -9,6 +9,7 @@ public class EffectManager : MonoBehaviour
         if (!hitEffect)
         {
             Debug.LogWarning("Hit Effect does not exist");
+            return;
         }
 
         GameObject Effect;

@@ -1538,17 +1538,17 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: -6824555204567782563, guid: 2b77f4efb0cd54e48a717cb4c3019710,
+    - sprite: {fileID: -1929293147746296403, guid: afebbba1f8632a746b2b5e4f9b92a525,
         type: 3}
-    - sprite: {fileID: 1334358398126189046, guid: 2b77f4efb0cd54e48a717cb4c3019710,
+    - sprite: {fileID: 4857309755330689461, guid: afebbba1f8632a746b2b5e4f9b92a525,
         type: 3}
-    - sprite: {fileID: -4799485494737478319, guid: 2b77f4efb0cd54e48a717cb4c3019710,
+    - sprite: {fileID: -740046624430917196, guid: afebbba1f8632a746b2b5e4f9b92a525,
         type: 3}
-    - sprite: {fileID: -1853702827231040517, guid: 2b77f4efb0cd54e48a717cb4c3019710,
+    - sprite: {fileID: 667605470368811405, guid: afebbba1f8632a746b2b5e4f9b92a525,
         type: 3}
-    - sprite: {fileID: 5748692566200601751, guid: 2b77f4efb0cd54e48a717cb4c3019710,
+    - sprite: {fileID: -2347698503576139691, guid: afebbba1f8632a746b2b5e4f9b92a525,
         type: 3}
-    - sprite: {fileID: 218543407161622471, guid: 2b77f4efb0cd54e48a717cb4c3019710,
+    - sprite: {fileID: -3700536880274937253, guid: afebbba1f8632a746b2b5e4f9b92a525,
         type: 3}
     flipU: 0
     flipV: 0

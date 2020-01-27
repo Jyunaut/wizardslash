@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2397198831864701142}
   - component: {fileID: 6789025705431592047}
   m_Layer: 0
-  m_Name: Effect_Dust1
+  m_Name: Effect_Dust01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1538,19 +1538,19 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: -8307714395808797153, guid: 38476f3d0ee2e4843840d40110b6ece9,
+    - sprite: {fileID: 6546929065860821547, guid: 3c13c22d520cf8a4a8b2dd72cce2b82b,
         type: 3}
-    - sprite: {fileID: -9004666009066468812, guid: 38476f3d0ee2e4843840d40110b6ece9,
+    - sprite: {fileID: -3206061625955701539, guid: 3c13c22d520cf8a4a8b2dd72cce2b82b,
         type: 3}
-    - sprite: {fileID: 1713365993816893121, guid: 38476f3d0ee2e4843840d40110b6ece9,
+    - sprite: {fileID: -786916725493502523, guid: 3c13c22d520cf8a4a8b2dd72cce2b82b,
         type: 3}
-    - sprite: {fileID: -7075089869430708873, guid: 38476f3d0ee2e4843840d40110b6ece9,
+    - sprite: {fileID: -900718563642549106, guid: 3c13c22d520cf8a4a8b2dd72cce2b82b,
         type: 3}
-    - sprite: {fileID: 5871588475933865520, guid: 38476f3d0ee2e4843840d40110b6ece9,
+    - sprite: {fileID: 7782537242107484500, guid: 3c13c22d520cf8a4a8b2dd72cce2b82b,
         type: 3}
-    - sprite: {fileID: 8764740000776837608, guid: 38476f3d0ee2e4843840d40110b6ece9,
+    - sprite: {fileID: 2409639700259823823, guid: 3c13c22d520cf8a4a8b2dd72cce2b82b,
         type: 3}
-    - sprite: {fileID: -6355531453743481306, guid: 38476f3d0ee2e4843840d40110b6ece9,
+    - sprite: {fileID: -8797586053320009244, guid: 3c13c22d520cf8a4a8b2dd72cce2b82b,
         type: 3}
     flipU: 0
     flipV: 0

@@ -30,7 +30,10 @@ public class CanHit : MonoBehaviour
             case AttackingUnit.Player:
                 canBeHit.OnScreenShake.Invoke(moveSelector.selectedMove.amplitude, moveSelector.selectedMove.shakeLength);
                 canBeHit.OnKnockback.Invoke(moveSelector.selectedMove.knockbackX, moveSelector.selectedMove.knockbackY, playerController.facingRight ? 1 : -1);
-                EffectManager.SpawnEffect(moveSelector.selectedMove.hitEffect, transform, targetCollider, true);
+                foreach(GameObject effect in moveSelector.selectedMove.hitEffect)
+                {
+                    EffectManager.SpawnEffect(effect, transform, targetCollider, true);
+                }
                 break;
             case AttackingUnit.Enemy:
                 break;
