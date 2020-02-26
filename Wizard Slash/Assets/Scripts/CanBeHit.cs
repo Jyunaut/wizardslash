@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class CanBeHit : MonoBehaviour
 {
     [Serializable]
-    public class DamageEvent : UnityEvent<CanHit> {}
+    public class DamageEvent : UnityEvent<int> {}
 
     [Serializable]
     public class KnockbackEvent : UnityEvent<float, float, int> {}
@@ -21,18 +21,26 @@ public class CanBeHit : MonoBehaviour
     private bool isKnockedback;
     private float knockbackTime;
     private Vector2 velocity;
+    private SpriteRenderer spriteRenderer;
 
     GameObject cinemachine;
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         cinemachine = GameObject.FindGameObjectWithTag("Cinemachine");
     }
 
-    public void TakeDamage(CanHit canHit)
+    private void ResetMaterialShader()
     {
-        print("it hurts");
+        spriteRenderer.material.shader = Shader.Find("Sprites/Default");
+    }
+
+    public void TakeDamage(int inflictedDamage)
+    {
+        spriteRenderer.material.shader = Shader.Find("GUI/Text Shader"); // TODO: Eventually replace this with a less-blinding white
+        Invoke("ResetMaterialShader", 0.02f);
     }
 
     public void GetKnockBacked(float knockbackForceX, float knockbackForceY, int knockbackDirection)

@@ -29,5 +29,5 @@ ScriptedImporter:
   - animationName: Fall
     loopTime: 1
     about: "Animation Type:\tForward\r\nAnimation:\tFrom: 6; To: 8"
-  atlas: {fileID: -8328923581568760697, guid: 4df30ad0102626f41a9486cd4696c7cc, type: 3}
+  atlas: {instanceID: 0}
   importType: 0

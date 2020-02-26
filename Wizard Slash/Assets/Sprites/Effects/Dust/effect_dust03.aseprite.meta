@@ -23,5 +23,5 @@ ScriptedImporter:
     tilePadding: {x: 0, y: 0}
     tileOffset: {x: 0, y: 0}
   animationSettings: []
-  atlas: {fileID: -8328923581568760697, guid: fef39f44a50194948a4f9864336b3bb9, type: 3}
+  atlas: {instanceID: 0}
   importType: 0
