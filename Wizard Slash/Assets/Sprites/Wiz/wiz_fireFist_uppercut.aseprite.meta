@@ -29,5 +29,5 @@ ScriptedImporter:
   - animationName: Attack
     loopTime: 1
     about: "Animation Type:\tForward\r\nAnimation:\tFrom: 5; To: 11"
-  atlas: {fileID: -8328923581568760697, guid: 3ca4d13585e1cf84f8e90d71359eb2a0, type: 3}
+  atlas: {instanceID: 0}
   importType: 0

@@ -15,7 +15,7 @@ ScriptedImporter:
     transparentColor: {r: 1, g: 0, b: 1, a: 1}
     meshType: 1
     extrudeEdges: 1
-    spritePivot: {x: 0.35, y: 0.5}
+    spritePivot: {x: 0.4, y: 0.45}
     generatePhysics: 1
     wrapMode: 1
     filterMode: 0
@@ -23,5 +23,5 @@ ScriptedImporter:
     tilePadding: {x: 0, y: 0}
     tileOffset: {x: 0, y: 0}
   animationSettings: []
-  atlas: {fileID: -8328923581568760697, guid: 2f3043d62cdfdf941abbc243f08c0b6b, type: 3}
+  atlas: {instanceID: 0}
   importType: 0

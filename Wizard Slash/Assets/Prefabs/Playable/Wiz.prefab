@@ -342,7 +342,7 @@ MonoBehaviour:
     amplitude: 0
     shakeLength: 0
     spawnEffect: {fileID: 0}
-    hitEffect: {fileID: 0}
+    hitEffect: []
 --- !u!114 &4085534239620474676
 MonoBehaviour:
   m_ObjectHideFlags: 0

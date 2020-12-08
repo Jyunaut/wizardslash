@@ -24,10 +24,7 @@ public class EffectManager : MonoBehaviour
         }
 
         if (sameDirection)
-        {
-            int flipSprite = (objectTransform.lossyScale.x == 1) ? 0 : 1;
-            Effect.GetComponent<ParticleSystemRenderer>().flip = new Vector2(flipSprite, 0);
-        }
+            Effect.GetComponent<ParticleSystemRenderer>().flip = new Vector2(objectTransform.lossyScale.x == 1 ? 0 : 1, 0);
     }
 
     // Spawn effects using Animation Events
@@ -36,9 +33,6 @@ public class EffectManager : MonoBehaviour
         GameObject Effect = Instantiate((GameObject)parameter.objectReferenceParameter, objectTransform.position, Quaternion.identity);
 
         if (sameDirection)
-        {
-            int flipSprite = (objectTransform.lossyScale.x == 1) ? 0 : 1;
-            Effect.GetComponent<ParticleSystemRenderer>().flip = new Vector2(flipSprite, 0);
-        }
+            Effect.GetComponent<ParticleSystemRenderer>().flip = new Vector2(objectTransform.lossyScale.x == 1 ? 0 : 1, 0);
     }
 }

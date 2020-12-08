@@ -22,6 +22,12 @@ ScriptedImporter:
     tileSize: {x: 32, y: 32}
     tilePadding: {x: 0, y: 0}
     tileOffset: {x: 0, y: 0}
-  animationSettings: []
+  animationSettings:
+  - animationName: Charge
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 0; To: 4"
+  - animationName: Attack
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 5; To: 8"
   atlas: {instanceID: 0}
   importType: 0

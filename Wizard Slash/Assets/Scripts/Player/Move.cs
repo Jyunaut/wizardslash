@@ -24,8 +24,12 @@ public class Move
     public float knockbackY;
 
     [Header("Screen Shake")]
-    [Range(0, 1)] public float amplitude;
-    [Range(0, 0.5f)] public float shakeLength;
+    [Range(0,1f)] public float amplitude;
+    [Range(0,0.5f)] public float shakeLength;
+
+    [Header("Time Slow")]
+    [Range(0,1f)] public float timeSlowPercent;
+    [Range(0,2f)] public float timeSlowLength;
 
     [Header("Particle Effects")]
     public GameObject spawnEffect;
