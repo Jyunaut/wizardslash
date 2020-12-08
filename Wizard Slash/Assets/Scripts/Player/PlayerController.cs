@@ -48,7 +48,7 @@ public class PlayerController : Actor
         {
             if (canMove && onGround)
             {
-                Invoke("Jump", 0.06f);
+                Jump();
                 attackTimer.ResetTimerAndValues();
                 currentAction = "AirNeutral";
             }

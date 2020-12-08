@@ -28,7 +28,7 @@ public class AttackTimer : MonoBehaviour
         timer = 0;
         timerInFrames = 0f;
 
-        playerController.currentAction = (playerController.onGround) ? "Neutral" : "AirNeutral";
+        playerController.currentAction = playerController.onGround ? "Neutral" : "AirNeutral";
         
         playerController.canAttack = true;
         playerController.canMove = true;

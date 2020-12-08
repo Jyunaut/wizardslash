@@ -7,9 +7,10 @@ public abstract class Actor : MonoBehaviour
 {
     public Rigidbody2D rigidbody2d;
     
-    [Range(0f, 15f)] public float moveSpeed;
-    [Range(0f, 20f)] public float jumpForce;
-    [Range(0f, 0.5f)] public float runAcceleration;
+    [Range(0f,15f)] public float moveSpeed;
+    [Range(0f,20f)] public float jumpForce;
+    [Range(0f,0.5f)] public float runAcceleration;
+    [Range(0f,1f)] public float knockbackResist;
 
     public string currentAction;
 

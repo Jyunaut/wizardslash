@@ -29,6 +29,8 @@ MonoBehaviour:
     knockbackY: 0
     amplitude: 0.1
     shakeLength: 0.1
+    timeSlowPercent: 0
+    timeSlowLength: 0
     spawnEffect: {fileID: 0}
     hitEffect:
     - {fileID: 8025125056083457099, guid: a52623962cfdb7f429d34f8cc24f33d2, type: 3}
@@ -47,6 +49,8 @@ MonoBehaviour:
     knockbackY: 0
     amplitude: 0.1
     shakeLength: 0.1
+    timeSlowPercent: 0
+    timeSlowLength: 0
     spawnEffect: {fileID: 0}
     hitEffect:
     - {fileID: 7362270373591739570, guid: 921e866d676f92f4b92287be94fda401, type: 3}
@@ -65,6 +69,8 @@ MonoBehaviour:
     knockbackY: 0
     amplitude: 0.15
     shakeLength: 0.3
+    timeSlowPercent: 0.31
+    timeSlowLength: 0.16
     spawnEffect: {fileID: 0}
     hitEffect:
     - {fileID: 8025125056083457099, guid: a52623962cfdb7f429d34f8cc24f33d2, type: 3}
@@ -86,6 +92,8 @@ MonoBehaviour:
     knockbackY: 3
     amplitude: 0.1
     shakeLength: 0.1
+    timeSlowPercent: 0
+    timeSlowLength: 0
     spawnEffect: {fileID: 0}
     hitEffect:
     - {fileID: 7362270373591739570, guid: 921e866d676f92f4b92287be94fda401, type: 3}
@@ -104,6 +112,8 @@ MonoBehaviour:
     knockbackY: 3
     amplitude: 0.1
     shakeLength: 0.1
+    timeSlowPercent: 0
+    timeSlowLength: 0
     spawnEffect: {fileID: 0}
     hitEffect:
     - {fileID: 8025125056083457099, guid: a52623962cfdb7f429d34f8cc24f33d2, type: 3}
@@ -121,7 +131,9 @@ MonoBehaviour:
     knockbackX: 7
     knockbackY: 3
     amplitude: 0.15
-    shakeLength: 0.3
+    shakeLength: 0.202
+    timeSlowPercent: 0.256
+    timeSlowLength: 0.2
     spawnEffect: {fileID: 0}
     hitEffect:
     - {fileID: 8025125056083457099, guid: a52623962cfdb7f429d34f8cc24f33d2, type: 3}
@@ -140,5 +152,7 @@ MonoBehaviour:
     knockbackY: 0
     amplitude: 0
     shakeLength: 0
+    timeSlowPercent: 0
+    timeSlowLength: 0
     spawnEffect: {fileID: 0}
     hitEffect: []

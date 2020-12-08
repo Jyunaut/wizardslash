@@ -24,7 +24,6 @@ public class CameraEffects : MonoBehaviour
             multiChannelPerlin.m_FrequencyGain = 0;
             isTiming = false;
             shakeTime = 0;
-            Time.timeScale = 1;
         }
     }
 
@@ -34,7 +33,5 @@ public class CameraEffects : MonoBehaviour
         multiChannelPerlin.m_FrequencyGain = 20f;
         isTiming = true;
         shakeTime = Time.unscaledTime + length;
-        previousTimeScale = Time.timeScale;
-        Time.timeScale = 0.75f;
     }
 }

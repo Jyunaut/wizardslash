@@ -31,6 +31,7 @@ public class CanHit : MonoBehaviour
                 canBeHit.OnTakeDamage.Invoke(1); //TODO: Add damage numbers
                 canBeHit.OnScreenShake.Invoke(moveSelector.selectedMove.amplitude, moveSelector.selectedMove.shakeLength);
                 canBeHit.OnKnockback.Invoke(moveSelector.selectedMove.knockbackX, moveSelector.selectedMove.knockbackY, playerController.facingRight ? 1 : -1);
+                canBeHit.OnTimeStop.Invoke(moveSelector.selectedMove.timeSlowPercent, moveSelector.selectedMove.timeSlowLength);
                 foreach(GameObject effect in moveSelector.selectedMove.hitEffect)
                     EffectManager.SpawnEffect(effect, transform, targetCollider, true);
                 break;

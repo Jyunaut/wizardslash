@@ -205,11 +205,11 @@ class RunBrake : State
     public override void EnterState()
     {
         if (playerAnimator.inCombat)
-            playerAnimator.animator.Play("RunBrake");   // TODO: Add RunBrake Combat animation
+            playerAnimator.animator.Play("RunBrake Combat");
         else
             playerAnimator.animator.Play("RunBrake");
 
-        stateEndTime = Time.time + 0.278f;
+        stateEndTime = Time.time + 0.333f;
     }
 
     public override void Transitions()
