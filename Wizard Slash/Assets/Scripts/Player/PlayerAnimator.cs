@@ -147,7 +147,7 @@ public abstract class State
 
     }
 
-    public void NonCombatTransition()
+    public void OutOfCombatTransition()
     {
 
     }
@@ -301,10 +301,10 @@ class Damaged : State
         
     }
 }
-// TODO: Implement NonCombatTransition State
-class NonCombatTransition : State
+// TODO: Implement OutOfCombatTransition State
+class OutOfCombatTransition : State
 {
-    public NonCombatTransition(PlayerAnimator playerAnimator) : base(playerAnimator) {}
+    public OutOfCombatTransition(PlayerAnimator playerAnimator) : base(playerAnimator) {}
 
     public override void EnterState()
     {

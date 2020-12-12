@@ -15,7 +15,7 @@ public class MoveSelector : MonoBehaviour
             if (moveset == null)
                 return currentAction;
 
-            // Moveset: Melee or Magic?
+            // Moveset: Melee, Magic or Utility?
             if (moveType == moveset.moveType)
             {
                 // Iterate through each equipped move's transitions to find one that matches the current action
@@ -25,6 +25,11 @@ public class MoveSelector : MonoBehaviour
                     {
                         // If a valid transition matches the current action, return the corresponding move
                         if (transition == currentAction)
+                        {
+                            selectedMove = move;
+                            return selectedMove.Name;
+                        }
+                        else if (transition == "All")
                         {
                             selectedMove = move;
                             return selectedMove.Name;

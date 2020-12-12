@@ -2,7 +2,6 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-README.txt
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -11,6 +10,7 @@ README.txt
 [Ll]ogs/
 [Mm]emoryCaptures/
 [Bb]uildStandalone/
+[Bb]uildWebGL/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -57,6 +57,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 *.zip
+*.rar
 
 # Crashlytics generated file
 crashlytics-build.properties

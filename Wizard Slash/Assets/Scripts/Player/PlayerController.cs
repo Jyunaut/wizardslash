@@ -30,10 +30,30 @@ public class PlayerController : Actor
         CheckDirection(playerInput.Horizontal);
     }
 
+    void HandleMoveInput(Moveset.MoveType moveType)
+    {
+        if (canAttack)
+        {
+            string previousAction = currentAction;
+            currentAction = moveSelector.ChooseMove(moveType, currentAction);
+            
+            if (currentAction == previousAction)
+                return;
+            StartMove();
+        }
+        else if (attackTimer.timer >= (moveSelector.selectedMove.recoverFrame - 1f) / AttackTimer.FPS
+                    && attackTimer.timer <= moveSelector.selectedMove.recoverFrame / AttackTimer.FPS)
+        {   
+            // Attack buffering
+            attackTimer.isQueued = true;
+            attackTimer.moveType = moveType;
+        }
+    }
+
     // Manages basic horizontal movement
     void FixedUpdate()
     {
-        if (!canMove || isAttacking)
+        if ((!canMove || isAttacking) && !moveSelector.selectedMove.movementAllowed)
             return;
         
         Run(playerInput.Horizontal);
@@ -55,45 +75,15 @@ public class PlayerController : Actor
         }
         else if (playerInput.Melee)
         {
-            if (canAttack)
-            {
-                string previousAction = currentAction;
-                currentAction = moveSelector.ChooseMove(Moveset.MoveType.Melee, currentAction);
-                
-                if (currentAction == previousAction)
-                    return;
-                StartMove();
-            }
-            else if (attackTimer.timer >= (moveSelector.selectedMove.recoverFrame - 1f) / AttackTimer.FPS
-                     && attackTimer.timer <= moveSelector.selectedMove.recoverFrame / AttackTimer.FPS)
-            {   
-                // Attack queueing (Melee)
-                attackTimer.isQueued = true;
-                attackTimer.moveType = Moveset.MoveType.Melee;
-            }
+            HandleMoveInput(Moveset.MoveType.Melee);
         }
         else if (playerInput.Magic)
         {
-            if (canAttack)
-            {
-                string previousAction = currentAction;
-                currentAction = moveSelector.ChooseMove(Moveset.MoveType.Magic, currentAction);
-
-                if (currentAction == previousAction)
-                    return;
-                StartMove();
-            }
-            else if (attackTimer.timer >= (moveSelector.selectedMove.recoverFrame - 1f) / AttackTimer.FPS
-                     && attackTimer.timer < moveSelector.selectedMove.recoverFrame / AttackTimer.FPS)
-            {
-                // Attack queueing (Magic)
-                attackTimer.isQueued = true;
-                attackTimer.moveType = Moveset.MoveType.Magic;
-            }
+            HandleMoveInput(Moveset.MoveType.Magic);
         }
         else if (playerInput.Dodge)
         {
-            //TODO: Implement player dodge
+            HandleMoveInput(Moveset.MoveType.Utility);
         }
     }
 }

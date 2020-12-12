@@ -22,6 +22,8 @@ MonoBehaviour:
     recoverFrame: 2
     totalFrames: 11
     pushFrames: 2
+    movementAllowed: 0
+    pushPlayer: 1
     pushX: 2
     pushY: 0
     decceleration: 0.25
@@ -42,6 +44,8 @@ MonoBehaviour:
     recoverFrame: 2
     totalFrames: 10
     pushFrames: 1
+    movementAllowed: 0
+    pushPlayer: 1
     pushX: 4
     pushY: 0
     decceleration: 0.25
@@ -59,9 +63,11 @@ MonoBehaviour:
     - Basic2
     windupFrame: 2
     hitFrame: 3
-    recoverFrame: 9
+    recoverFrame: 8
     totalFrames: 12
     pushFrames: 2
+    movementAllowed: 0
+    pushPlayer: 1
     pushX: 10
     pushY: 0
     decceleration: 0.5
@@ -84,9 +90,11 @@ MonoBehaviour:
     hitFrame: 2
     recoverFrame: 2
     totalFrames: 9
-    pushFrames: 5
+    pushFrames: 2
+    movementAllowed: 0
+    pushPlayer: 1
     pushX: 2
-    pushY: 6
+    pushY: 2
     decceleration: 1
     knockbackX: 2
     knockbackY: 3
@@ -104,9 +112,11 @@ MonoBehaviour:
     hitFrame: 2
     recoverFrame: 2
     totalFrames: 9
-    pushFrames: 5
+    pushFrames: 2
+    movementAllowed: 0
+    pushPlayer: 1
     pushX: 2
-    pushY: 6
+    pushY: 2
     decceleration: 1
     knockbackX: 2
     knockbackY: 3
@@ -122,11 +132,13 @@ MonoBehaviour:
     - AirBasic2
     windupFrame: 2
     hitFrame: 3
-    recoverFrame: 7
+    recoverFrame: 5
     totalFrames: 11
-    pushFrames: 11
-    pushX: 2
-    pushY: 6
+    pushFrames: 3
+    movementAllowed: 0
+    pushPlayer: 1
+    pushX: 3
+    pushY: 2
     decceleration: 1
     knockbackX: 7
     knockbackY: 3
@@ -145,6 +157,8 @@ MonoBehaviour:
     recoverFrame: 3
     totalFrames: 10
     pushFrames: 3
+    movementAllowed: 0
+    pushPlayer: 0
     pushX: 2
     pushY: 7
     decceleration: 1

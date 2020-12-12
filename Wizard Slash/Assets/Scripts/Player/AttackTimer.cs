@@ -33,6 +33,8 @@ public class AttackTimer : MonoBehaviour
         playerController.canAttack = true;
         playerController.canMove = true;
         playerController.isAttacking = false;
+        isPushing = false;
+        playerController.rigidbody2d.gravityScale = 1;
     }
 
     // Each player move goes through a timeline where windup -> hit -> recover
@@ -85,6 +87,7 @@ public class AttackTimer : MonoBehaviour
         if (initialPush)
         {
             // Initial push of the attack
+            playerController.rigidbody2d.gravityScale = 0;
             playerController.rigidbody2d.velocity = new Vector2(direction * moveSelector.selectedMove.pushX, moveSelector.selectedMove.pushY);
             pushEndTime = Time.time + moveSelector.selectedMove.pushFrames / FPS;
             initialPush = false;
@@ -98,7 +101,9 @@ public class AttackTimer : MonoBehaviour
         else if (Time.time >= pushEndTime)
         {
             // Stop the push after the end time
+            playerController.rigidbody2d.gravityScale = 1;
             playerController.rigidbody2d.velocity = new Vector2(0, playerController.rigidbody2d.velocity.y);
+            Debug.Log("dig");
             isPushing = false;
         }
     }
@@ -108,7 +113,7 @@ public class AttackTimer : MonoBehaviour
         if (!isTiming)
             return;
         
-        if (isPushing)
+        if (isPushing && moveSelector.selectedMove.pushPlayer)
             PushPlayer();
         
         TimeAttack();

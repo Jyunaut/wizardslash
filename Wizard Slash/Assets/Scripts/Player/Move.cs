@@ -15,6 +15,8 @@ public class Move
     public float pushFrames;
 
     [Header("Player Push")]
+    public bool movementAllowed;
+    public bool pushPlayer;
     public float pushX;
     public float pushY;
     public float decceleration;
