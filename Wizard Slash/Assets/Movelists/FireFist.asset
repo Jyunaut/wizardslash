@@ -62,6 +62,7 @@ MonoBehaviour:
     canTransitionFrom:
     - FireFist Light2
     - Basic2
+    - Basic3
     windupFrame: 1
     hitFrame: 2
     recoverFrame: 10
@@ -76,7 +77,7 @@ MonoBehaviour:
     knockbackY: 0
     amplitude: 0.5
     shakeLength: 0.3
-    timeSlowPercent: 0.483
+    timeSlowPercent: 0.326
     timeSlowLength: 0.61
     spawnEffect: {fileID: 0}
     hitEffect:

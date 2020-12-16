@@ -17,6 +17,7 @@ MonoBehaviour:
   - Name: Basic1
     canTransitionFrom:
     - Neutral
+    - DashSlash
     windupFrame: 1
     hitFrame: 2
     recoverFrame: 2
@@ -149,9 +150,31 @@ MonoBehaviour:
     spawnEffect: {fileID: 0}
     hitEffect:
     - {fileID: 8025125056083457099, guid: a52623962cfdb7f429d34f8cc24f33d2, type: 3}
+  - Name: DashSlash
+    canTransitionFrom:
+    - Dash
+    windupFrame: 3
+    hitFrame: 4
+    recoverFrame: 6
+    totalFrames: 10
+    pushFrames: 4
+    movementAllowed: 0
+    pushPlayer: 1
+    pushX: 25
+    pushY: 0
+    decceleration: 0
+    knockbackX: 15
+    knockbackY: 0
+    amplitude: 0.1
+    shakeLength: 0.1
+    timeSlowPercent: 0
+    timeSlowLength: 0
+    spawnEffect: {fileID: 0}
+    hitEffect:
+    - {fileID: 7362270373591739570, guid: 921e866d676f92f4b92287be94fda401, type: 3}
   - Name: RisingSlash
     canTransitionFrom:
-    - AirDodge
+    - AirDash
     windupFrame: 1
     hitFrame: 2
     recoverFrame: 3
