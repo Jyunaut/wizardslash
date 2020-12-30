@@ -12,13 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4dc749402221546b804d79c41fbdd5, type: 3}
   m_Name: Melee
   m_EditorClassIdentifier: 
-  moveType: 0
+  moveType: 1
   moves:
   - Name: Basic1
+    position: 0
     canTransitionFrom:
-    - Neutral
+    - Idle
+    - IdleCombat
+    - Run
+    - RunCombat
     - DashSlash
-    windupFrame: 1
+    cannotTransitionFrom: []
+    windupFrame: 2
     hitFrame: 2
     recoverFrame: 2
     totalFrames: 11
@@ -38,8 +43,10 @@ MonoBehaviour:
     hitEffect:
     - {fileID: 8025125056083457099, guid: a52623962cfdb7f429d34f8cc24f33d2, type: 3}
   - Name: Basic2
+    position: 0
     canTransitionFrom:
     - Basic1
+    cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 2
     recoverFrame: 2
@@ -60,8 +67,10 @@ MonoBehaviour:
     hitEffect:
     - {fileID: 7362270373591739570, guid: 921e866d676f92f4b92287be94fda401, type: 3}
   - Name: Basic3
+    position: 0
     canTransitionFrom:
     - Basic2
+    cannotTransitionFrom: []
     windupFrame: 2
     hitFrame: 3
     recoverFrame: 8
@@ -82,21 +91,24 @@ MonoBehaviour:
     hitEffect:
     - {fileID: 8025125056083457099, guid: a52623962cfdb7f429d34f8cc24f33d2, type: 3}
   - Name: AirBasic1
+    position: 1
     canTransitionFrom:
-    - AirNeutral
+    - Jump
+    - Fall
     - FireFist Uppercut
     - RisingSlash
     - FireFist AirUppercut
+    cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 2
     recoverFrame: 2
     totalFrames: 9
     pushFrames: 2
-    movementAllowed: 0
+    movementAllowed: 1
     pushPlayer: 1
-    pushX: 2
-    pushY: 2
-    decceleration: 1
+    pushX: 0
+    pushY: 1
+    decceleration: 0
     knockbackX: 2
     knockbackY: 3
     amplitude: 0.1
@@ -107,18 +119,20 @@ MonoBehaviour:
     hitEffect:
     - {fileID: 7362270373591739570, guid: 921e866d676f92f4b92287be94fda401, type: 3}
   - Name: AirBasic2
+    position: 1
     canTransitionFrom:
     - AirBasic1
+    cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 2
     recoverFrame: 2
     totalFrames: 9
     pushFrames: 2
-    movementAllowed: 0
+    movementAllowed: 1
     pushPlayer: 1
-    pushX: 2
-    pushY: 2
-    decceleration: 1
+    pushX: 0
+    pushY: 1
+    decceleration: 0
     knockbackX: 2
     knockbackY: 3
     amplitude: 0.1
@@ -129,18 +143,20 @@ MonoBehaviour:
     hitEffect:
     - {fileID: 8025125056083457099, guid: a52623962cfdb7f429d34f8cc24f33d2, type: 3}
   - Name: AirBasic3
+    position: 1
     canTransitionFrom:
     - AirBasic2
+    cannotTransitionFrom: []
     windupFrame: 2
     hitFrame: 3
     recoverFrame: 5
     totalFrames: 11
     pushFrames: 3
-    movementAllowed: 0
+    movementAllowed: 1
     pushPlayer: 1
-    pushX: 3
-    pushY: 2
-    decceleration: 1
+    pushX: 0
+    pushY: 1
+    decceleration: 0
     knockbackX: 7
     knockbackY: 3
     amplitude: 0.15
@@ -151,8 +167,10 @@ MonoBehaviour:
     hitEffect:
     - {fileID: 8025125056083457099, guid: a52623962cfdb7f429d34f8cc24f33d2, type: 3}
   - Name: DashSlash
+    position: 0
     canTransitionFrom:
     - Dash
+    cannotTransitionFrom: []
     windupFrame: 3
     hitFrame: 4
     recoverFrame: 6
@@ -173,23 +191,26 @@ MonoBehaviour:
     hitEffect:
     - {fileID: 7362270373591739570, guid: 921e866d676f92f4b92287be94fda401, type: 3}
   - Name: RisingSlash
+    position: 1
     canTransitionFrom:
     - AirDash
+    cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 2
-    recoverFrame: 3
+    recoverFrame: 4
     totalFrames: 10
     pushFrames: 3
     movementAllowed: 0
-    pushPlayer: 0
-    pushX: 2
-    pushY: 7
-    decceleration: 1
-    knockbackX: 0
-    knockbackY: 0
-    amplitude: 0
-    shakeLength: 0
+    pushPlayer: 1
+    pushX: 10
+    pushY: 5
+    decceleration: 0.25
+    knockbackX: 6
+    knockbackY: 15
+    amplitude: 0.1
+    shakeLength: 0.1
     timeSlowPercent: 0
     timeSlowLength: 0
     spawnEffect: {fileID: 0}
-    hitEffect: []
+    hitEffect:
+    - {fileID: 8025125056083457099, guid: a52623962cfdb7f429d34f8cc24f33d2, type: 3}

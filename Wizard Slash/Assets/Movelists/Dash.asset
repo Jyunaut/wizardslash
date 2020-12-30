@@ -12,11 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4dc749402221546b804d79c41fbdd5, type: 3}
   m_Name: Dash
   m_EditorClassIdentifier: 
-  moveType: 2
+  moveType: 3
   moves:
   - Name: Dash
+    position: 0
     canTransitionFrom:
     - All
+    cannotTransitionFrom:
+    - AirNeutral
+    windupFrame: 0
+    hitFrame: 0
+    recoverFrame: 2
+    totalFrames: 6
+    pushFrames: 6
+    movementAllowed: 0
+    pushPlayer: 1
+    pushX: 18
+    pushY: 0
+    decceleration: 1
+    knockbackX: 0
+    knockbackY: 0
+    amplitude: 0
+    shakeLength: 0
+    timeSlowPercent: 0
+    timeSlowLength: 0
+    spawnEffect: {fileID: 0}
+    hitEffect: []
+  - Name: AirDash
+    position: 1
+    canTransitionFrom:
+    - All
+    cannotTransitionFrom:
+    - Neutral
     windupFrame: 0
     hitFrame: 0
     recoverFrame: 2

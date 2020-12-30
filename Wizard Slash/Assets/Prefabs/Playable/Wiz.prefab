@@ -106,7 +106,6 @@ GameObject:
   - component: {fileID: -2747963508487929305}
   - component: {fileID: 3024773905009128221}
   - component: {fileID: 6593409428046688681}
-  - component: {fileID: 8289632400252465348}
   - component: {fileID: 4085534239620474676}
   m_Layer: 9
   m_Name: Wiz
@@ -287,8 +286,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01d90d86ddc8f74db5a515e28df0508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  animator: {fileID: 0}
+  controller: {fileID: -2747963508487929305}
+  animator: {fileID: 6441749729559134415}
+  movesets:
+  - {fileID: 11400000, guid: 0d8bf508d69f4714184d8cd99e4069d4, type: 2}
+  - {fileID: 11400000, guid: 129ecb090b9cc9849830a5ce245c3894, type: 2}
+  - {fileID: 11400000, guid: fee830e6f54db7942a1fad65d0c2b44b, type: 2}
+  selectedMove:
+    Name: 
+    position: 0
+    canTransitionFrom: []
+    cannotTransitionFrom: []
+    windupFrame: 0
+    hitFrame: 0
+    recoverFrame: 0
+    totalFrames: 0
+    pushFrames: 0
+    movementAllowed: 0
+    pushPlayer: 0
+    pushX: 0
+    pushY: 0
+    decceleration: 0
+    knockbackX: 0
+    knockbackY: 0
+    amplitude: 0
+    shakeLength: 0
+    timeSlowPercent: 0
+    timeSlowLength: 0
+    spawnEffect: {fileID: 0}
+    hitEffect: []
   effectLocation:
   - {fileID: 7593302472842381314}
   - {fileID: 6504386664767986266}
@@ -314,45 +340,6 @@ MonoBehaviour:
   isPushing: 0
   initialPush: 0
   moveType: 0
---- !u!114 &8289632400252465348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8596141872101394220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23605e8097f7d8845abc92f1b383be86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movesets:
-  - {fileID: 11400000, guid: 0d8bf508d69f4714184d8cd99e4069d4, type: 2}
-  - {fileID: 11400000, guid: fee830e6f54db7942a1fad65d0c2b44b, type: 2}
-  - {fileID: 11400000, guid: 129ecb090b9cc9849830a5ce245c3894, type: 2}
-  selectedMove:
-    Name: 
-    position: 0
-    canTransitionFrom: []
-    cannotTransitionFrom: []
-    windupFrame: 0
-    hitFrame: 0
-    recoverFrame: 0
-    totalFrames: 0
-    pushFrames: 0
-    movementAllowed: 0
-    pushPlayer: 0
-    pushX: 0
-    pushY: 0
-    decceleration: 0
-    knockbackX: 0
-    knockbackY: 0
-    amplitude: 0
-    shakeLength: 0
-    timeSlowPercent: 0
-    timeSlowLength: 0
-    spawnEffect: {fileID: 0}
-    hitEffect: []
 --- !u!114 &4085534239620474676
 MonoBehaviour:
   m_ObjectHideFlags: 0

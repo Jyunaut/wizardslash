@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4dc749402221546b804d79c41fbdd5, type: 3}
   m_Name: FireFist
   m_EditorClassIdentifier: 
-  moveType: 1
+  moveType: 2
   moves:
   - Name: FireFist Light1
+    position: 0
     canTransitionFrom:
-    - Neutral
+    - Idle
+    - Idle Combat
+    cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 2
     recoverFrame: 2
@@ -37,8 +40,10 @@ MonoBehaviour:
     hitEffect:
     - {fileID: 0}
   - Name: FireFist Light2
+    position: 0
     canTransitionFrom:
     - FireFist Light1
+    cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 2
     recoverFrame: 2
@@ -59,10 +64,12 @@ MonoBehaviour:
     hitEffect:
     - {fileID: 0}
   - Name: FireFist Heavy
+    position: 0
     canTransitionFrom:
     - FireFist Light2
     - Basic2
     - Basic3
+    cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 2
     recoverFrame: 10
@@ -83,8 +90,10 @@ MonoBehaviour:
     hitEffect:
     - {fileID: 0}
   - Name: FireFist Uppercut
+    position: 0
     canTransitionFrom:
     - Basic1
+    cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 1
     recoverFrame: 5
@@ -105,12 +114,14 @@ MonoBehaviour:
     hitEffect:
     - {fileID: 0}
   - Name: FireFist AirUppercut
+    position: 1
     canTransitionFrom:
     - AirNeutral
     - AirDodge
     - AirBasic1
     - AirBasic2
     - AirBasic3
+    cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 1
     recoverFrame: 5

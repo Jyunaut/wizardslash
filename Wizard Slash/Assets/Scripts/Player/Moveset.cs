@@ -4,11 +4,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Moveset : ScriptableObject
 {
-    public enum MoveType
-    {
-        Melee, Magic, Utility
-    };
-
-    public MoveType moveType;
+    public Player.PlayerInput.Action moveType;
     public List<Move> moves = new List<Move>();
 }
