@@ -8,30 +8,16 @@ namespace Player.Wiz
 
         public override void DoStateBehaviour()
         {
-            stateManager.animator.Play(stateName);
+            if (stateManager.isInCombat)
+                stateManager.animator.Play(stateName + "Combat");
+            else
+                stateManager.animator.Play(stateName);
         }
 
         public override void Transitions()
         {
-            Run();
-            Fall();
-        }
-    }
-
-    class IdleCombat : WizState
-    {
-        public IdleCombat(StateManager stateManager) : base(stateManager, "IdleCombat") {}
-
-        public override void DoStateBehaviour()
-        {
-            stateManager.animator.Play(stateName);
-        }
-
-        public override void Transitions()
-        {
-            RunCombat();
-            Idle();
-            Run();
+            if      (Run())  {}
+            else if (Fall()) {}
         }
     }
 
@@ -41,29 +27,17 @@ namespace Player.Wiz
 
         public override void DoStateBehaviour()
         {
-            stateManager.animator.Play(stateName);
+            if (stateManager.isInCombat)
+                stateManager.animator.Play(stateName + "Combat");
+            else
+                stateManager.animator.Play(stateName);
         }
 
         public override void Transitions()
         {
-            Idle();
-            Fall();
-        }
-    }
-
-    class RunCombat : WizState
-    {
-        public RunCombat(StateManager stateManager) : base(stateManager, "RunCombat") {}
-
-        public override void DoStateBehaviour()
-        {
-            stateManager.animator.Play(stateName);
-        }
-
-        public override void Transitions()
-        {
-            IdleCombat();
-            Run();
+            if      (RunBrake()) {}
+            else if (Idle())     {}
+            else if (Fall())     {}
         }
     }
 
@@ -76,21 +50,27 @@ namespace Player.Wiz
         public override void EnterState()
         {
             if (stateManager.isInCombat)
-                stateManager.animator.Play(stateName + " Combat");
+            {
+                stateManager.animator.Play(stateName + "Combat");
+                stateEndTime = Time.time + 0.333f;
+            }
             else
+            {
                 stateManager.animator.Play(stateName);
-
-            stateEndTime = Time.time + 0.278f;
+                stateEndTime = Time.time + 0.278f;
+            }
         }
 
         public override void Transitions()
         {
             if (Time.time >= stateEndTime)
-                Idle();
+            {
+                Idle(); return;
+            }
 
-            Run();    
-            Jump();
-            Fall();
+            if      (Run())  {}    
+            else if (Jump()) {}
+            else if (Fall()) {}
         }
     }
 

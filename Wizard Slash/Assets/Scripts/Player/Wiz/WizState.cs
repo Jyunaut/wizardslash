@@ -13,7 +13,7 @@ namespace Player.Wiz
             if (action == PlayerInput.Action.Jump)
                 Jump();
             else
-            {
+            {   // TODO: Rename "ChooseMove" to something better
                 bool canAttack = stateManager.ChooseMove(action);
                 if (canAttack)
                 {
@@ -23,86 +23,68 @@ namespace Player.Wiz
             }
         }
 
-        protected void Attacks(Move move)
-        {
-            // TODO: Fix when there is no transition to move to
-            if (stateManager.animator.HasState(0, Animator.StringToHash(move.Name))
-                && !stateManager.animator.GetCurrentAnimatorStateInfo(0).IsName(move.Name))
-            {
-                Type.GetType(this.ToString()).InvokeMember(move.Name, BindingFlags.InvokeMethod, null, this, null); return;
-                
-            }
-        }
-
-        protected void Idle()
-        {
-            if (stateManager.controller.playerInput.Horizontal == 0
-                && stateManager.onGround
-                && !stateManager.isInCombat)
-            {
-                stateManager.SetState(new Idle(stateManager)); return;
-            }
-        }
-
-        protected void IdleCombat()
-        {
-            if (stateManager.controller.playerInput.Horizontal == 0
-                && stateManager.onGround
-                && stateManager.isInCombat)
-            {
-                stateManager.SetState(new IdleCombat(stateManager)); return;
-            }
-        }
-
-        protected void Run()
-        {
-            if (stateManager.controller.playerInput.Horizontal != 0
-                && Mathf.Abs(stateManager.controller.rigidbody2d.velocity.x) > 0
-                && stateManager.onGround
-                && !stateManager.isInCombat)
-            {
-                stateManager.SetState(new Run(stateManager)); return;
-            }
-        }
-
-        protected void RunCombat()
-        {
-            if (stateManager.controller.playerInput.Horizontal != 0
-                && Mathf.Abs(stateManager.controller.rigidbody2d.velocity.x) > 0
-                && stateManager.onGround
-                && stateManager.isInCombat)
-            {
-                stateManager.SetState(new RunCombat(stateManager)); return;
-            }
-        }
-
-        protected void RunBrake()
+        #region Transition Conditions
+        protected bool Idle()
         {
             if (stateManager.controller.playerInput.Horizontal == 0
                 && stateManager.onGround)
             {
-                stateManager.SetState(new RunBrake(stateManager)); return;
+                stateManager.SetState(new Idle(stateManager)); return true;
             }
+            return false;
         }
 
-        protected void Jump()
+        protected bool Run()
+        {
+            if (stateManager.controller.playerInput.Horizontal != 0
+                && Mathf.Abs(stateManager.controller.rigidbody2d.velocity.x) > 0
+                && stateManager.onGround)
+            {
+                stateManager.SetState(new Run(stateManager)); return true;
+            }
+            return false;
+        }
+
+        protected bool RunBrake()
+        {
+            if (stateManager.controller.playerInput.Horizontal == 0
+                && stateManager.onGround)
+            {
+                stateManager.SetState(new RunBrake(stateManager)); return true;
+            }
+            return false;
+        }
+
+        protected bool Jump()
         {
             if (stateManager.controller.playerInput.Jump
                 && stateManager.canMove
                 && stateManager.onGround)
             {
-                stateManager.SetState(new Jump(stateManager)); return;
+                stateManager.SetState(new Jump(stateManager)); return true;
             }
+            return false;
         }
 
-        protected void Fall()
+        protected bool Fall()
         {
             if (stateManager.controller.rigidbody2d.velocity.y <= 0
                 && !stateManager.onGround)
             {
-                stateManager.SetState(new Fall(stateManager)); return;
+                stateManager.SetState(new Fall(stateManager)); return true;
+            }
+            return false;
+        }
+
+        protected void Attacks(Move move)
+        {
+            if (stateManager.animator.HasState(0, Animator.StringToHash(move.Name))
+                && !stateManager.animator.GetCurrentAnimatorStateInfo(0).IsName(move.Name))
+            {
+                Type.GetType(this.ToString()).InvokeMember(move.Name, BindingFlags.InvokeMethod, null, this, null);
             }
         }
+        #endregion
 
         #region Melee Attacks
         public void Basic1()    => stateManager.SetState(new Basic1(stateManager));

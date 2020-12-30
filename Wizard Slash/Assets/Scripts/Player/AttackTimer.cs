@@ -35,7 +35,6 @@ namespace Player
             timer = 0f;
             timerInFrames = 0f;
             
-            stateManager.SetState(new Player.Wiz.IdleCombat(stateManager));
             stateManager.canAttack = true;
             stateManager.canMove = true;
             stateManager.isAttacking = false;

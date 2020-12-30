@@ -18,9 +18,8 @@ MonoBehaviour:
     position: 0
     canTransitionFrom:
     - Idle
-    - IdleCombat
     - Run
-    - RunCombat
+    - RunBrake
     - DashSlash
     cannotTransitionFrom: []
     windupFrame: 2
