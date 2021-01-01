@@ -26,7 +26,6 @@ public class CanBeHit : MonoBehaviour
     private Rigidbody2D rigidbody2d;
     private SpriteRenderer spriteRenderer;
     private GameObject cinemachine;
-
     private bool isKnockedback;
     private float knockbackTime;
     private float curTime;

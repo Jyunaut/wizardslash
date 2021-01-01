@@ -12,16 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4dc749402221546b804d79c41fbdd5, type: 3}
   m_Name: FireFist
   m_EditorClassIdentifier: 
-  moveType: 1
+  moveType: 2
   moves:
-  - Name: FireFist Light1
+  - Name: FireFistLight1
+    position: 0
     canTransitionFrom:
-    - Neutral
+    - Idle
+    - Run
+    - RunBrake
+    cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 2
     recoverFrame: 2
     totalFrames: 8
     pushFrames: 1
+    movementAllowed: 0
+    pushPlayer: 1
     pushX: 5
     pushY: 0
     decceleration: 0.25
@@ -34,14 +40,18 @@ MonoBehaviour:
     spawnEffect: {fileID: 0}
     hitEffect:
     - {fileID: 0}
-  - Name: FireFist Light2
+  - Name: FireFistLight2
+    position: 0
     canTransitionFrom:
-    - FireFist Light1
+    - FireFistLight1
+    cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 2
     recoverFrame: 2
     totalFrames: 8
     pushFrames: 1
+    movementAllowed: 0
+    pushPlayer: 1
     pushX: 5
     pushY: 0
     decceleration: 0.25
@@ -54,15 +64,20 @@ MonoBehaviour:
     spawnEffect: {fileID: 0}
     hitEffect:
     - {fileID: 0}
-  - Name: FireFist Heavy
+  - Name: FireFistHeavy
+    position: 0
     canTransitionFrom:
-    - FireFist Light2
+    - FireFistLight2
     - Basic2
+    - Basic3
+    cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 2
     recoverFrame: 10
     totalFrames: 12
     pushFrames: 5
+    movementAllowed: 0
+    pushPlayer: 1
     pushX: 30
     pushY: 0
     decceleration: 0.1
@@ -70,21 +85,25 @@ MonoBehaviour:
     knockbackY: 0
     amplitude: 0.5
     shakeLength: 0.3
-    timeSlowPercent: 0.483
+    timeSlowPercent: 0.326
     timeSlowLength: 0.61
     spawnEffect: {fileID: 0}
     hitEffect:
     - {fileID: 0}
-  - Name: FireFist Uppercut
+  - Name: FireFistUppercut
+    position: 0
     canTransitionFrom:
     - Basic1
+    cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 1
     recoverFrame: 5
     totalFrames: 12
     pushFrames: 3
+    movementAllowed: 0
+    pushPlayer: 1
     pushX: 7
-    pushY: 15
+    pushY: 11
     decceleration: 0.25
     knockbackX: 3
     knockbackY: 15
@@ -95,20 +114,24 @@ MonoBehaviour:
     spawnEffect: {fileID: 0}
     hitEffect:
     - {fileID: 0}
-  - Name: FireFist AirUppercut
+  - Name: FireFistAirUppercut
+    position: 1
     canTransitionFrom:
     - AirNeutral
     - AirDodge
     - AirBasic1
     - AirBasic2
     - AirBasic3
+    cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 1
     recoverFrame: 5
     totalFrames: 12
-    pushFrames: 12
+    pushFrames: 3
+    movementAllowed: 0
+    pushPlayer: 1
     pushX: 2
-    pushY: 8
+    pushY: 7
     decceleration: 1
     knockbackX: 3
     knockbackY: 5

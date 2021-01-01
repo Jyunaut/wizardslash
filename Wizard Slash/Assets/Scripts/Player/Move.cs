@@ -1,11 +1,17 @@
 ﻿using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 [System.Serializable]
 public class Move
 {
     public string Name;
+
+    public enum Position { Ground, Air, Both };
+    [Header("Conditions")]
+    public Position position;
     public string[] canTransitionFrom;
+    public string[] cannotTransitionFrom;
 
     [Header("Animation Frame Windows")]
     public float windupFrame;
@@ -15,6 +21,8 @@ public class Move
     public float pushFrames;
 
     [Header("Player Push")]
+    public bool movementAllowed;
+    public bool pushPlayer;
     public float pushX;
     public float pushY;
     public float decceleration;

@@ -3,11 +3,11 @@ using Cinemachine;
 
 public class CameraEffects : MonoBehaviour
 {
+    public static float previousTimeScale = 1f;
+    
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private CinemachineBasicMultiChannelPerlin multiChannelPerlin;
-    
     private bool isTiming;
-    public static float previousTimeScale = 1f;
     private float shakeTime = 0;
 
     void Start()
