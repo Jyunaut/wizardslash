@@ -19,7 +19,10 @@ MonoBehaviour:
     canTransitionFrom:
     - All
     cannotTransitionFrom:
-    - AirNeutral
+    - Jump
+    - Fall
+    - Dash
+    - AirDash
     windupFrame: 0
     hitFrame: 0
     recoverFrame: 2
@@ -43,7 +46,8 @@ MonoBehaviour:
     canTransitionFrom:
     - All
     cannotTransitionFrom:
-    - Neutral
+    - Idle
+    - AirDash
     windupFrame: 0
     hitFrame: 0
     recoverFrame: 2

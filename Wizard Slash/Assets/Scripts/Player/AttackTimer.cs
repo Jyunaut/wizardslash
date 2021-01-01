@@ -29,7 +29,7 @@ namespace Player
             stateManager.CheckDirection(controller.playerInput.Horizontal);
         }
 
-        void ResetTimerAndValues()
+        public void ResetTimerAndValues()
         {
             isTiming = false;
             timer = 0f;

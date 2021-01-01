@@ -23,6 +23,11 @@ namespace Player.Wiz
             }
         }
 
+        protected void Attacks(Move move)
+        {
+            Type.GetType(this.ToString()).InvokeMember(move.Name, BindingFlags.InvokeMethod, null, this, null);
+        }
+
         #region Transition Conditions
         protected bool Idle()
         {
@@ -75,24 +80,30 @@ namespace Player.Wiz
             }
             return false;
         }
-
-        protected void Attacks(Move move)
-        {
-            if (stateManager.animator.HasState(0, Animator.StringToHash(move.Name))
-                && !stateManager.animator.GetCurrentAnimatorStateInfo(0).IsName(move.Name))
-            {
-                Type.GetType(this.ToString()).InvokeMember(move.Name, BindingFlags.InvokeMethod, null, this, null);
-            }
-        }
         #endregion
 
-        #region Melee Attacks
-        public void Basic1()    => stateManager.SetState(new Basic1(stateManager));
-        public void Basic2()    => stateManager.SetState(new Basic2(stateManager));
-        public void Basic3()    => stateManager.SetState(new Basic3(stateManager));
-        public void AirBasic1() => stateManager.SetState(new AirBasic1(stateManager));
-        public void AirBasic2() => stateManager.SetState(new AirBasic2(stateManager));
-        public void AirBasic3() => stateManager.SetState(new AirBasic3(stateManager));
+        #region Melee
+        public void Basic1()      => stateManager.SetState(new Basic1(stateManager));
+        public void Basic2()      => stateManager.SetState(new Basic2(stateManager));
+        public void Basic3()      => stateManager.SetState(new Basic3(stateManager));
+        public void AirBasic1()   => stateManager.SetState(new AirBasic1(stateManager));
+        public void AirBasic2()   => stateManager.SetState(new AirBasic2(stateManager));
+        public void AirBasic3()   => stateManager.SetState(new AirBasic3(stateManager));
+        public void DashSlash()   => stateManager.SetState(new DashSlash(stateManager));
+        public void RisingSlash() => stateManager.SetState(new RisingSlash(stateManager));
+        #endregion
+
+        #region Utility
+        public void Dash()    => stateManager.SetState(new Dash(stateManager));
+        public void AirDash() => stateManager.SetState(new AirDash(stateManager));
+        #endregion
+
+        #region Fire Fist
+        public void FireFistLight1()      => stateManager.SetState(new FireFistLight1(stateManager));
+        public void FireFistLight2()      => stateManager.SetState(new FireFistLight2(stateManager));
+        public void FireFistHeavy()       => stateManager.SetState(new FireFistHeavy(stateManager));
+        public void FireFistUppercut()    => stateManager.SetState(new FireFistUppercut(stateManager));
+        public void FireFistAirUppercut() => stateManager.SetState(new FireFistAirUppercut(stateManager));
         #endregion
     }
 }

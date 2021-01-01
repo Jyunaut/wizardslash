@@ -1,7 +1,4 @@
-﻿using System;
-using System.Reflection;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Player
 {
@@ -36,6 +33,26 @@ namespace Player
             canMove = true;
             canAttack = true;
             isAttacking = false;
+        }
+
+        void Start()
+        {
+            controller = GetComponent<Controller>();
+            animator = GetComponent<Animator>();
+
+            // Select starting state
+            switch (character)
+            {
+                case Character.Wiz:
+                    SetState(new Wiz.Idle(this));
+                    break;
+                case Character.Teacher:
+                    //SetState(new Teacher.Idle(this));
+                    //break;
+                default:
+                    Debug.Log("Uh oh stinky");
+                    break;
+            }
         }
 
         public void SetState(PlayerState state)
@@ -73,6 +90,7 @@ namespace Player
                 {
                     foreach(Move move in moveset.moves)
                     {
+                        bool skip = false;
                         // Iterate through each equipped move's transitions to find one that matches the current action
                         foreach(string transition in move.canTransitionFrom)
                         {
@@ -86,21 +104,23 @@ namespace Player
                                     return true;
                                 }
                             }
-                            else if (transition == "All")
+                        }
+                        if (move.canTransitionFrom[0] == "All")
+                        {
+                            // Exceptions to any transitions
+                            foreach(string nonTransition in move.cannotTransitionFrom)
                             {
-                                // Exceptions to any transitions
-                                foreach(string nonTransition in move.cannotTransitionFrom)
+                                if (nonTransition == playerStateName)
                                 {
-                                    if (nonTransition == selectedMove.Name)
-                                        continue;
-
-                                    if (InCorrectPosition(move))
-                                    {
-                                        selectedMoveset = moveset;
-                                        selectedMove = move;
-                                        return true;
-                                    }
+                                    skip = true;
+                                    break;
                                 }
+                            }
+                            if (!skip && InCorrectPosition(move))
+                            {   
+                                selectedMoveset = moveset;
+                                selectedMove = move;
+                                return true;
                             }
                         }
                     }
@@ -129,26 +149,6 @@ namespace Player
             if (move.position == Move.Position.Air    && !onGround) return true;
             if (move.position == Move.Position.Both) return true;
             return false;
-        }
-
-        void Start()
-        {
-            controller = GetComponent<Controller>();
-            animator = GetComponent<Animator>();
-            
-            // Select starting state
-            switch (character)
-            {
-                case Character.Wiz:
-                    SetState(new Wiz.Idle(this));
-                    break;
-                case Character.Teacher:
-                    //SetState(new Teacher.Idle(this));
-                    //break;
-                default:
-                    Debug.Log("Uh oh stinky");
-                    break;
-            }
         }
 
         void Update()

@@ -94,9 +94,9 @@ MonoBehaviour:
     canTransitionFrom:
     - Jump
     - Fall
-    - FireFist Uppercut
+    - FireFistUppercut
     - RisingSlash
-    - FireFist AirUppercut
+    - FireFistAirUppercut
     cannotTransitionFrom: []
     windupFrame: 1
     hitFrame: 2

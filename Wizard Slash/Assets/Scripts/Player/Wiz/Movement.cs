@@ -52,7 +52,7 @@ namespace Player.Wiz
             if (stateManager.isInCombat)
             {
                 stateManager.animator.Play(stateName + "Combat");
-                stateEndTime = Time.time + 0.333f;
+                stateEndTime = Time.time + 0.300f;
             }
             else
             {
@@ -84,6 +84,7 @@ namespace Player.Wiz
             stateManager.controller.rigidbody2d.velocity = new Vector2(Mathf.Clamp(stateManager.controller.rigidbody2d.velocity.x,
                                                                                   -stateManager.controller.moveSpeed, stateManager.controller.moveSpeed),
                                                                        stateManager.controller.jumpForce);
+            stateManager.controller.attackTimer.ResetTimerAndValues();
         }
 
         public override void Transitions()

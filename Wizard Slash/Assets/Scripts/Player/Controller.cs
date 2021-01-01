@@ -17,13 +17,13 @@ namespace Player
             {
                 stateManager.playerState.HandleInput(action);
             }
-            // else if (attackTimer.timer >= (stateManager.selectedMove.recoverFrame - 1f) / AttackTimer.FPS
-            //         && attackTimer.timer <= stateManager.selectedMove.recoverFrame / AttackTimer.FPS)
-            // {   
-            //     // Attack buffering
-            //     attackTimer.isQueued = true;
-            //     attackTimer.action = action;
-            // }
+            else if (attackTimer.timer >= (stateManager.selectedMove.recoverFrame - 1f) / AttackTimer.FPS
+                    && attackTimer.timer <= stateManager.selectedMove.recoverFrame / AttackTimer.FPS)
+            {   
+                // Attack buffering
+                attackTimer.isQueued = true;
+                attackTimer.action = action;
+            }
         }
 
         void Start()

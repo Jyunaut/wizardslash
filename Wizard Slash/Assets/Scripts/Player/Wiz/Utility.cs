@@ -1,7 +1,19 @@
 namespace Player.Wiz
 {
-    // public abstract class Utility : WizState
-    // {
-    //     public Utility(StateManager stateManager) : base(stateManager) {}
-    // }
+    class Dash : Attack
+    {
+        public Dash(StateManager stateManager) : base(stateManager, "Dash") {}
+
+        public override void EnterState()
+        {
+            UnityEngine.Debug.Log("wa");
+            stateManager.animator.Play(stateName, 0, 0f);
+            base.EnterState();
+        }
+    }
+
+    class AirDash : Attack
+    {
+        public AirDash(StateManager stateManager) : base(stateManager, "AirDash") {}
+    }
 }

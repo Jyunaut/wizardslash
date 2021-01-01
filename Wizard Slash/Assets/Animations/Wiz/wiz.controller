@@ -197,7 +197,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FireFist Light2
+  m_Name: FireFistLight2
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -346,7 +346,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FireFist Light1
+  m_Name: FireFistLight1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -474,7 +474,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FireFist AirUppercut
+  m_Name: FireFistAirUppercut
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -710,7 +710,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FireFist Uppercut
+  m_Name: FireFistUppercut
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -788,7 +788,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FireFist Heavy
+  m_Name: FireFistHeavy
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
