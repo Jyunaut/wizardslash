@@ -16,16 +16,20 @@ namespace Player.Wiz
             {   // TODO: Rename "ChooseMove" to something better
                 bool canAttack = stateManager.ChooseMove(action);
                 if (canAttack)
-                {
-                    stateManager.controller.attackTimer.StartMove();
                     Attacks(stateManager.selectedMove);
-                }
             }
         }
 
         protected void Attacks(Move move)
         {
+            stateManager.controller.attackTimer.StartMove();
             Type.GetType(this.ToString()).InvokeMember(move.Name, BindingFlags.InvokeMethod, null, this, null);
+        }
+
+        protected void Attacks(string attackName)
+        {
+            stateManager.controller.attackTimer.StartMove();
+            Type.GetType(this.ToString()).InvokeMember(attackName, BindingFlags.InvokeMethod, null, this, null);
         }
 
         #region Transition Conditions

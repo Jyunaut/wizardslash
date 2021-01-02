@@ -171,7 +171,7 @@ MonoBehaviour:
     - Dash
     cannotTransitionFrom: []
     windupFrame: 3
-    hitFrame: 4
+    hitFrame: 3
     recoverFrame: 6
     totalFrames: 10
     pushFrames: 4

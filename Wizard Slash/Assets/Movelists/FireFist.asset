@@ -48,7 +48,7 @@ MonoBehaviour:
     windupFrame: 1
     hitFrame: 2
     recoverFrame: 2
-    totalFrames: 8
+    totalFrames: 18
     pushFrames: 1
     movementAllowed: 0
     pushPlayer: 1

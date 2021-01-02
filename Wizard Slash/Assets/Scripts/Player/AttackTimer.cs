@@ -11,7 +11,7 @@ namespace Player
         public bool isTiming;
         public bool isPushing;
         public bool initialPush;
-        public PlayerInput.Action action;
+        [HideInInspector] public PlayerInput.Action action;
 
         private Controller controller;
         private StateManager stateManager;

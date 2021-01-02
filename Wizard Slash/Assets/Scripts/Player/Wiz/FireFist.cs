@@ -4,10 +4,33 @@ namespace Player.Wiz
     {
         public FireFistLight1(StateManager stateManager) : base(stateManager, "FireFistLight1") {}
     }
-
+    
+    // TODO: Consider improving the game-feel of this rapid-punch
     class FireFistLight2 : Attack
     {
         public FireFistLight2(StateManager stateManager) : base(stateManager, "FireFistLight2") {}
+
+        private float rapidPunchTime = 0.333f;
+
+        public override void EnterState()
+        {
+            rapidPunchTime = 0.333f;
+            stateManager.animator.Play(stateName, 0, 0f);
+            base.EnterState();
+        }
+
+        public override void DoStateBehaviour()
+        {
+            rapidPunchTime -= UnityEngine.Time.deltaTime;
+        }
+
+        public override void HandleInput(PlayerInput.Action action)
+        {
+            if (rapidPunchTime > 0f && action == PlayerInput.Action.Magic)
+                Attacks(stateName);
+            else
+                base.HandleInput(action);
+        }
     }
 
     class FireFistHeavy : Attack

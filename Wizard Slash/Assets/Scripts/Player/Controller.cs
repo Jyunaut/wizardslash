@@ -10,6 +10,7 @@ namespace Player
         public AttackTimer attackTimer;
         
         private StateManager stateManager;
+        private const int bufferFrames = 1;
 
         void HandleInput(PlayerInput.Action action)
         {
@@ -17,8 +18,8 @@ namespace Player
             {
                 stateManager.playerState.HandleInput(action);
             }
-            else if (attackTimer.timer >= (stateManager.selectedMove.recoverFrame - 1f) / AttackTimer.FPS
-                    && attackTimer.timer <= stateManager.selectedMove.recoverFrame / AttackTimer.FPS)
+            else if (attackTimer.timer >= (stateManager.selectedMove.recoverFrame - bufferFrames) / AttackTimer.FPS
+                     && attackTimer.timer <= stateManager.selectedMove.recoverFrame / AttackTimer.FPS)
             {   
                 // Attack buffering
                 attackTimer.isQueued = true;
@@ -46,22 +47,14 @@ namespace Player
         // Manages single-input key presses
         void Update()
         {
-            if (playerInput.Jump)
-            {
+            if      (playerInput.Jump)
                 HandleInput(PlayerInput.Action.Jump);
-            }
             else if (playerInput.Melee)
-            {
                 HandleInput(PlayerInput.Action.Melee);
-            }
             else if (playerInput.Magic)
-            {
                 HandleInput(PlayerInput.Action.Magic);
-            }
             else if (playerInput.Utility)
-            {
                 HandleInput(PlayerInput.Action.Utility);
-            }
         }
     }
 }

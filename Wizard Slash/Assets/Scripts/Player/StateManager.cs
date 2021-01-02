@@ -90,7 +90,6 @@ namespace Player
                 {
                     foreach(Move move in moveset.moves)
                     {
-                        bool skip = false;
                         // Iterate through each equipped move's transitions to find one that matches the current action
                         foreach(string transition in move.canTransitionFrom)
                         {
@@ -107,6 +106,7 @@ namespace Player
                         }
                         if (move.canTransitionFrom[0] == "All")
                         {
+                            bool skip = false;
                             // Exceptions to any transitions
                             foreach(string nonTransition in move.cannotTransitionFrom)
                             {

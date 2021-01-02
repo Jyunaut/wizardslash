@@ -6,7 +6,6 @@ namespace Player.Wiz
 
         public override void EnterState()
         {
-            UnityEngine.Debug.Log("wa");
             stateManager.animator.Play(stateName, 0, 0f);
             base.EnterState();
         }
