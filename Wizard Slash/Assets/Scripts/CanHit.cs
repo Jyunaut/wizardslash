@@ -30,10 +30,10 @@ public class CanHit : MonoBehaviour
         {
             case AttackingUnit.Player:
                 canBeHit.OnTakeDamage.Invoke(1); //TODO: Add damage numbers
-                canBeHit.OnScreenShake.Invoke(stateManager.selectedMove.amplitude, stateManager.selectedMove.shakeLength);
-                canBeHit.OnKnockback.Invoke(stateManager.selectedMove.knockbackX, stateManager.selectedMove.knockbackY, stateManager.facingRight ? 1 : -1);
-                canBeHit.OnTimeStop.Invoke(stateManager.selectedMove.timeSlowPercent, stateManager.selectedMove.timeSlowLength);
-                foreach(GameObject effect in stateManager.selectedMove.hitEffect)
+                canBeHit.OnScreenShake.Invoke(stateManager.SelectedMove.amplitude, stateManager.SelectedMove.shakeLength);
+                canBeHit.OnKnockback.Invoke(stateManager.SelectedMove.knockbackX, stateManager.SelectedMove.knockbackY, stateManager.IsFacingRight ? 1 : -1);
+                canBeHit.OnTimeStop.Invoke(stateManager.SelectedMove.timeSlowPercent, stateManager.SelectedMove.timeSlowLength);
+                foreach(GameObject effect in stateManager.SelectedMove.hitEffect)
                     EffectManager.SpawnEffect(effect, transform, targetCollider, true);
                 break;
             case AttackingUnit.Enemy:

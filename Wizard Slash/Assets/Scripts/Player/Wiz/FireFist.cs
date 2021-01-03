@@ -8,14 +8,14 @@ namespace Player.Wiz
     // TODO: Consider improving the game-feel of this rapid-punch
     class FireFistLight2 : Attack
     {
-        public FireFistLight2(StateManager stateManager) : base(stateManager, "FireFistLight2") {}
-
         private float rapidPunchTime = 0.333f;
+
+        public FireFistLight2(StateManager stateManager) : base(stateManager, "FireFistLight2") {}
 
         public override void EnterState()
         {
             rapidPunchTime = 0.333f;
-            stateManager.animator.Play(stateName, 0, 0f);
+            stateManager.Animator.Play(stateName, 0, 0f);
             base.EnterState();
         }
 

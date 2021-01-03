@@ -6,7 +6,7 @@ namespace Player.Wiz
 
         public override void EnterState()
         {
-            stateManager.animator.Play(stateName, 0, 0f);
+            stateManager.Animator.Play(stateName, 0, 0f);
             base.EnterState();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using ExtensionMethods;
 
 namespace Player
 {
@@ -6,26 +7,11 @@ namespace Player
     [RequireComponent(typeof(StateManager))]
     public class Controller : Actor
     {
-        public PlayerInput playerInput = new PlayerInput();
+        public PlayerInput PlayerInput = new PlayerInput();
         public AttackTimer attackTimer;
         
         private StateManager stateManager;
         private const int bufferFrames = 1;
-
-        void HandleInput(PlayerInput.Action action)
-        {
-            if (stateManager.canAttack)
-            {
-                stateManager.playerState.HandleInput(action);
-            }
-            else if (attackTimer.timer >= (stateManager.selectedMove.recoverFrame - bufferFrames) / AttackTimer.FPS
-                     && attackTimer.timer <= stateManager.selectedMove.recoverFrame / AttackTimer.FPS)
-            {   
-                // Attack buffering
-                attackTimer.isQueued = true;
-                attackTimer.action = action;
-            }
-        }
 
         void Start()
         {
@@ -33,27 +19,41 @@ namespace Player
             stateManager = GetComponent<StateManager>();
         }
 
+        void HandleInput(PlayerInput.Action action)
+        {
+            if (stateManager.CanAttack)
+            {
+                stateManager.PlayerState.HandleInput(action);
+            }
+            else if (attackTimer.Timer >= (stateManager.SelectedMove.recoverFrame - bufferFrames).ToTime()
+                     && attackTimer.Timer <= stateManager.SelectedMove.recoverFrame.ToTime())
+            {   
+                // Attack buffering
+                attackTimer.QueueMove(action);
+            }
+        }
+
         // Manages basic horizontal movement
         void FixedUpdate()
         {
-            if ((!stateManager.canMove || stateManager.isAttacking) && !stateManager.selectedMove.movementAllowed)
+            if ((!stateManager.CanMove || attackTimer.IsTiming) && !stateManager.SelectedMove.movementAllowed)
                 return;
             
-            Run(playerInput.Horizontal);
-            if (attackTimer.timer == 0)
-                stateManager.CheckDirection(playerInput.Horizontal);
+            Run(PlayerInput.Horizontal);
+            if (attackTimer.Timer <= float.Epsilon)
+                stateManager.CheckDirection(PlayerInput.Horizontal);
         }
 
         // Manages single-input key presses
         void Update()
         {
-            if      (playerInput.Jump)
+            if      (PlayerInput.Jump)
                 HandleInput(PlayerInput.Action.Jump);
-            else if (playerInput.Melee)
+            else if (PlayerInput.Melee)
                 HandleInput(PlayerInput.Action.Melee);
-            else if (playerInput.Magic)
+            else if (PlayerInput.Magic)
                 HandleInput(PlayerInput.Action.Magic);
-            else if (playerInput.Utility)
+            else if (PlayerInput.Utility)
                 HandleInput(PlayerInput.Action.Utility);
         }
     }

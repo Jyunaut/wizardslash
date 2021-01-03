@@ -16,27 +16,27 @@ namespace Player.Wiz
             {   // TODO: Rename "ChooseMove" to something better
                 bool canAttack = stateManager.ChooseMove(action);
                 if (canAttack)
-                    Attacks(stateManager.selectedMove);
+                    Attacks(stateManager.SelectedMove);
             }
         }
 
         protected void Attacks(Move move)
         {
-            stateManager.controller.attackTimer.StartMove();
+            stateManager.Controller.attackTimer.StartMove();
             Type.GetType(this.ToString()).InvokeMember(move.Name, BindingFlags.InvokeMethod, null, this, null);
         }
 
         protected void Attacks(string attackName)
         {
-            stateManager.controller.attackTimer.StartMove();
+            stateManager.Controller.attackTimer.StartMove();
             Type.GetType(this.ToString()).InvokeMember(attackName, BindingFlags.InvokeMethod, null, this, null);
         }
 
         #region Transition Conditions
         protected bool Idle()
         {
-            if (stateManager.controller.playerInput.Horizontal == 0
-                && stateManager.onGround)
+            if (stateManager.Controller.PlayerInput.Horizontal == 0
+                && stateManager.IsOnGround)
             {
                 stateManager.SetState(new Idle(stateManager)); return true;
             }
@@ -45,9 +45,9 @@ namespace Player.Wiz
 
         protected bool Run()
         {
-            if (stateManager.controller.playerInput.Horizontal != 0
-                && Mathf.Abs(stateManager.controller.rigidbody2d.velocity.x) > 0
-                && stateManager.onGround)
+            if (stateManager.Controller.PlayerInput.Horizontal != 0
+                && Mathf.Abs(stateManager.Controller.rigidbody2d.velocity.x) > 0
+                && stateManager.IsOnGround)
             {
                 stateManager.SetState(new Run(stateManager)); return true;
             }
@@ -56,8 +56,8 @@ namespace Player.Wiz
 
         protected bool RunBrake()
         {
-            if (stateManager.controller.playerInput.Horizontal == 0
-                && stateManager.onGround)
+            if (stateManager.Controller.PlayerInput.Horizontal == 0
+                && stateManager.IsOnGround)
             {
                 stateManager.SetState(new RunBrake(stateManager)); return true;
             }
@@ -66,9 +66,9 @@ namespace Player.Wiz
 
         protected bool Jump()
         {
-            if (stateManager.controller.playerInput.Jump
-                && stateManager.canMove
-                && stateManager.onGround)
+            if (stateManager.Controller.PlayerInput.Jump
+                && stateManager.CanMove
+                && stateManager.IsOnGround)
             {
                 stateManager.SetState(new Jump(stateManager)); return true;
             }
@@ -77,8 +77,8 @@ namespace Player.Wiz
 
         protected bool Fall()
         {
-            if (stateManager.controller.rigidbody2d.velocity.y <= 0
-                && !stateManager.onGround)
+            if (stateManager.Controller.rigidbody2d.velocity.y <= 0
+                && !stateManager.IsOnGround)
             {
                 stateManager.SetState(new Fall(stateManager)); return true;
             }

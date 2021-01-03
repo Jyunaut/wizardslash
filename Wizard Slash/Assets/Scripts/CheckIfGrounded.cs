@@ -8,7 +8,7 @@ public class CheckIfGrounded : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
-            GetComponentInParent<Player.StateManager>().onGround = true;
+            GetComponentInParent<Player.StateManager>().SetGroundState(true);
         }
     }
 
@@ -16,7 +16,7 @@ public class CheckIfGrounded : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
-            GetComponentInParent<Player.StateManager>().onGround = false;
+            GetComponentInParent<Player.StateManager>().SetGroundState(false);
         }
     }
 }

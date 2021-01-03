@@ -268,12 +268,8 @@ MonoBehaviour:
   jumpForce: 14
   runAcceleration: 0.08
   knockbackResist: 0
-  currentAction: AirNeutral
-  onGround: 0
-  facingRight: 1
-  canMove: 1
-  canAttack: 1
-  isAttacking: 0
+  velocity: {x: 0, y: 0}
+  attackTimer: {fileID: 0}
 --- !u!114 &3024773905009128221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,41 +282,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01d90d86ddc8f74db5a515e28df0508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: -2747963508487929305}
-  animator: {fileID: 6441749729559134415}
+  character: 0
   movesets:
   - {fileID: 11400000, guid: 0d8bf508d69f4714184d8cd99e4069d4, type: 2}
   - {fileID: 11400000, guid: 129ecb090b9cc9849830a5ce245c3894, type: 2}
   - {fileID: 11400000, guid: fee830e6f54db7942a1fad65d0c2b44b, type: 2}
-  selectedMove:
-    Name: 
-    position: 0
-    canTransitionFrom: []
-    cannotTransitionFrom: []
-    windupFrame: 0
-    hitFrame: 0
-    recoverFrame: 0
-    totalFrames: 0
-    pushFrames: 0
-    movementAllowed: 0
-    pushPlayer: 0
-    pushX: 0
-    pushY: 0
-    decceleration: 0
-    knockbackX: 0
-    knockbackY: 0
-    amplitude: 0
-    shakeLength: 0
-    timeSlowPercent: 0
-    timeSlowLength: 0
-    spawnEffect: {fileID: 0}
-    hitEffect: []
-  effectLocation:
+  effectLocations:
   - {fileID: 7593302472842381314}
   - {fileID: 6504386664767986266}
   - {fileID: 2511639513339474768}
-  stateInString: 
-  inCombat: 0
 --- !u!114 &6593409428046688681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,13 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 316be51290b901a4e9f6d0b4917e69ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0
-  timerInFrames: 0
-  isQueued: 0
-  isTiming: 0
-  isPushing: 0
-  initialPush: 0
-  moveType: 0
 --- !u!114 &4085534239620474676
 MonoBehaviour:
   m_ObjectHideFlags: 0
